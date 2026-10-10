@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doce Custo — precificação para doceiras</title>
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#10070a"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Doce Custo">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root,:root[data-theme=dark]{--bg:#10070a;--tx:#f7ead9;--mu:#b9a69b;--gold:#f0ce91;--berry:#d93455;--ok:#65d28a;--bad:#f0808c;--ln:rgba(255,255,255,.12);--gl:rgba(255,255,255,.06);--sh:#1d0d13;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#fbf3ea;--tx:#2a1016;--mu:#7a5b57;--gold:#8f5f12;--berry:#b8203f;--ok:#1d7f46;--bad:#c0283c;--ln:rgba(80,20,35,.16);--gl:rgba(120,30,50,.06);--sh:#fffaf4}}
+:root[data-theme=light]{--bg:#fbf3ea;--tx:#2a1016;--mu:#7a5b57;--gold:#8f5f12;--berry:#b8203f;--ok:#1d7f46;--bad:#c0283c;--ln:rgba(80,20,35,.16);--gl:rgba(120,30,50,.06);--sh:#fffaf4}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:radial-gradient(circle at 85% -5%,color-mix(in srgb,var(--berry) 24%,var(--bg)),var(--bg) 52%),var(--bg);color:var(--tx);font:15px/1.5 Manrope,system-ui,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+select option{background:var(--sh);color:var(--tx)}
+#shell{max-width:920px;margin:0 auto;padding:20px 18px 120px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+.brand{display:flex;gap:12px;align-items:center}.brand b{font:700 1.15rem Fraunces,Georgia,serif;display:block}.brand small{color:var(--mu);font-size:.75rem}.brand-logo{display:block;height:auto;width:min(220px,52vw);max-width:100%}
+.mk{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-size:1.3rem;background:linear-gradient(135deg,#d6aa60,#a8661f);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.price-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);align-items:center;gap:18px}
+.price-selects{display:grid;grid-template-columns:minmax(120px,150px) minmax(0,280px);gap:8px;justify-content:end}
+.price-selects select{min-width:0;margin:0}
+@media(max-width:700px){.price-head{grid-template-columns:1fr;gap:14px}.price-selects{grid-template-columns:minmax(110px,150px) minmax(0,1fr);justify-content:stretch}}
+h2{font:700 clamp(1.9rem,6vw,2.6rem)/1.05 Fraunces,Georgia,serif;margin:0;letter-spacing:-.02em}.hd p{margin:6px 0 0;color:var(--mu)}
+h3{font:600 1.1rem Fraunces,Georgia,serif;margin:0 0 12px}h4{margin:20px 0 8px}
+.pri,.ghost{border-radius:14px;padding:11px 18px;border:1px solid var(--ln);min-height:44px;font-weight:700}
+.pri{background:linear-gradient(135deg,var(--berry),color-mix(in srgb,var(--berry) 55%,#000));border-color:transparent;color:#fff}
+.ghost{background:var(--gl)}
+.list{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:15px 17px;border-radius:20px;background:var(--gl);border:1px solid var(--ln);backdrop-filter:blur(14px)}
+.row small{display:block;color:var(--mu);font-size:.78rem}.cost{text-align:right;color:var(--gold);font-weight:800;font-size:.88rem}.cost small{font-weight:500}
+.acts{display:flex;gap:6px}.acts button,.x{min-width:38px;height:38px;border-radius:11px;border:1px solid var(--ln);background:transparent;padding:0 8px;font-size:.78rem}
+.card{padding:20px;border-radius:24px;background:var(--gl);border:1px solid var(--ln);backdrop-filter:blur(14px)}
+.two{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:start}
+.ln{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--ln);font-size:.88rem}.ln small{color:var(--mu)}.ln.tot{font-weight:800;color:var(--gold);border:0;padding-top:14px}
+.bd,.ln.bd b{color:var(--bad)}.okc{color:var(--ok)}.cmp{font-size:.85rem;margin:12px 0 0}
+.tag{margin-top:16px;padding:22px 20px;border-radius:20px;background:linear-gradient(145deg,color-mix(in srgb,var(--gold) 20%,transparent),transparent);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent)}
+.tag small{color:var(--mu);display:block}.tag strong{display:block;font:700 clamp(3rem,13vw,4.6rem)/1 Fraunces,Georgia,serif;color:var(--gold);letter-spacing:-.03em;margin:4px 0 8px}.tag span{font-size:.82rem;color:var(--mu)}
+label{display:block;color:var(--mu);font-size:.8rem;margin-bottom:13px}
+input,select,textarea{width:100%;margin-top:6px;padding:11px 13px;min-height:44px;border-radius:12px;border:1px solid var(--ln);background:var(--gl)}
+input[type=range]{padding:0;accent-color:var(--berry)}
+.aproveitamento-toggle{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:8px 0 0;margin-bottom:13px}
+.aproveitamento-toggle input[type=checkbox]{width:22px;height:22px;min-height:22px;margin:0;justify-self:end;accent-color:var(--berry)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.labor-field{grid-column:1/-1;min-width:0}
+.labor-calc{width:100%;min-width:0}
+.labor-fields{grid-template-columns:repeat(2,minmax(0,1fr));align-items:end}
+.labor-result{grid-column:1/-1;min-height:54px;align-items:center;margin:0}
+.labor-calc .mact{margin-top:12px}
+@media(max-width:420px){.labor-fields{grid-template-columns:1fr}.labor-result{grid-column:auto}}
+.app-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:42px;padding:18px 4px;border-top:1px solid var(--ln);color:var(--mu);font-size:.82rem}
+.app-footer p{margin:0}
+.support-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 16px;border:1px solid rgba(37,211,102,.45);border-radius:14px;background:rgba(37,211,102,.12);color:var(--tx);font-weight:700;text-decoration:none;white-space:nowrap}
+.support-link:hover{background:rgba(37,211,102,.2)}
+.support-link svg{width:19px;height:19px;flex:none;color:#25d366}
+@media(max-width:520px){.app-footer{flex-direction:column;text-align:center}}
+#enc-copy:disabled{opacity:.55;cursor:not-allowed}
+.order-help{margin:0 0 18px;padding:14px 16px;border:1px solid var(--ln);border-radius:15px;background:var(--gl);color:var(--mu);font-size:.84rem}
+.order-help p{margin:0}.order-help p+p{margin-top:8px}
+.order-search{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.order-search input{margin:0;min-width:0}
+.order-search small{flex:none;color:var(--mu)}
+.order-recipes{display:grid;gap:2px}
+.order-recipe{margin:0}
+.order-recipe small{display:block;margin:2px 0 6px}
+.order-no-results{margin:8px 0;color:var(--mu);font-size:.84rem}
+.order-results-title{margin:18px 0 6px}
+.irow{display:grid;grid-template-columns:1fr 1fr 78px 66px 40px;gap:8px;margin-bottom:8px}.irow input,.irow select{margin:0;padding:8px}
+.prev{padding:13px 15px;border-radius:13px;background:var(--gl);border:1px solid var(--ln);display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--mu);margin-bottom:6px}.prev b{color:var(--gold)}
+.empty{padding:44px 20px;text-align:center;color:var(--mu);border:1px dashed var(--ln);border-radius:20px}
+nav{display:flex;gap:6px;margin:-8px 0 26px;padding:5px;border-radius:999px;background:var(--gl);border:1px solid var(--ln);width:max-content;max-width:100%}
+nav button{border:0;background:transparent;padding:10px 20px;border-radius:999px;color:var(--mu);font-weight:700}nav button.on{background:var(--tx);color:var(--bg)}
+.mobile-nav-toggle{display:none}
+#ov{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.62);display:flex;align-items:flex-end;justify-content:center}
+.sheet{width:100%;max-width:560px;max-height:92vh;overflow:auto;background:var(--sh);border:1px solid var(--ln);border-radius:26px 26px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.sheet h3{font-size:1.5rem}.mact{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:18px}.mu{color:var(--mu)}
+.term-help{display:inline-flex;align-items:center;gap:5px}.help-tip{display:inline-grid;place-items:center;flex:none;width:17px;height:17px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:var(--mu);font:700 11px/1 Manrope,system-ui,sans-serif;vertical-align:middle;cursor:pointer}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:11px 18px;border-radius:14px;font-weight:700;font-size:.85rem;z-index:99;max-width:90vw}
+.bar{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:4px 0 10px;background:var(--ln)}.bar i{display:block;height:100%}
+.lg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.74rem;color:var(--mu);margin-bottom:12px}.lg b{font-weight:600}.lg b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:var(--c)}
+.pl{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.72rem;font-weight:800;border:1px solid;margin-left:6px}.pl.g{color:var(--ok)}.pl.y{color:var(--gold)}.pl.r{color:var(--bad)}
+.chr{display:grid;grid-template-columns:1fr 62px 80px 38px;gap:8px;align-items:center;margin-bottom:8px}.chr input{margin:0;padding:8px}.chr b{text-align:right;color:var(--gold);font-size:.88rem}
+.top{display:grid;grid-template-columns:1fr auto 1fr;gap:20px 12px;align-items:center;position:relative;overflow:hidden;padding:24px;border-radius:30px;margin-bottom:28px;background:linear-gradient(135deg,color-mix(in srgb,var(--berry) 30%,transparent),var(--gl) 62%);border:1px solid var(--ln);backdrop-filter:blur(16px)}
+.top::after{content:"";position:absolute;right:-60px;top:-80px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 38%,transparent),transparent 70%);pointer-events:none}
+.top>*{position:relative;z-index:1}.top .mk{width:56px;height:56px;border-radius:19px;font-size:1.6rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 0 4px color-mix(in srgb,var(--gold) 22%,transparent)}
+.top-features{grid-column:1;grid-row:1;justify-self:start;margin:0;padding:0;list-style:none;color:var(--mu);font-size:.8rem;line-height:1.8}
+.top .brand{grid-column:2;grid-row:1;justify-self:center;gap:16px}.top>button{grid-column:3;grid-row:1;justify-self:end}.top .brand b{font-size:clamp(1.5rem,5vw,2rem);letter-spacing:-.02em;line-height:1.05}.top .brand small{font-size:.82rem;margin-top:3px;display:block}
+@media(max-width:620px){.top{grid-template-columns:1fr}.top-features,.top .brand,.top>button{grid-column:1;justify-self:center;text-align:center}.top-features{grid-row:1}.top .brand{grid-row:2}.top>button{grid-row:3}}
+@media(min-width:700px){#ov{align-items:center}.sheet{border-radius:26px}}
+@media(max-width:700px){.two{grid-template-columns:1fr}.two>.card:last-child{order:-1}
+nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,1fr);gap:4px;width:calc(100vw - 24px);max-width:420px;height:88px;margin:0;border-radius:18px;background:var(--sh);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+nav button{padding:9px 6px;border-radius:10px;font-size:.78rem;white-space:nowrap}
+.mobile-nav-toggle{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:31;display:inline-flex;align-items:center;justify-content:center;width:40px;height:18px;min-height:0;padding:0;border:1px solid var(--ln);border-bottom:0;border-radius:10px 10px 0 0;background:var(--sh);color:var(--mu);line-height:1}
+.mobile-nav-toggle svg{width:16px;height:16px;display:block}
+#nav[hidden]~.mobile-nav-toggle{bottom:calc(12px + env(safe-area-inset-bottom,0px));width:32px;height:24px;border:1px solid var(--ln);border-radius:12px;background:color-mix(in srgb,var(--sh) 90%,transparent)}
+.row{grid-template-columns:1fr auto}.acts{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* V3 */
+.searchbar{display:flex;gap:9px;align-items:center;margin:-4px 0 14px}.searchbar input{margin:0}.searchbar .count{white-space:nowrap;color:var(--mu);font-size:.76rem}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.kpi{padding:17px;border-radius:20px;background:var(--gl);border:1px solid var(--ln)}.kpi small{display:block;color:var(--mu);font-size:.72rem}.kpi b{display:block;font:700 clamp(1.45rem,4vw,2rem)/1.1 Fraunces,Georgia,serif;color:var(--gold);margin-top:4px}.kpi .sub{font-size:.72rem;color:var(--mu);margin-top:5px}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.quick button{text-align:left;padding:15px;border-radius:18px;border:1px solid var(--ln);background:var(--gl)}.quick b{display:block}.quick small{color:var(--mu)}
+.dgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.mini-list{display:grid;gap:4px}.mini-list .ln{align-items:center}.mini-list .ln button{border:0;background:transparent;color:var(--gold);font-weight:800}.notice{padding:14px 16px;border-radius:17px;background:color-mix(in srgb,var(--gold) 9%,transparent);border:1px solid color-mix(in srgb,var(--gold) 25%,transparent);margin-bottom:16px}.notice strong{color:var(--gold)}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sim-card{padding:15px;border-radius:18px;background:var(--gl);border:1px solid var(--ln)}.sim-card small{color:var(--mu);display:block}.sim-card b{display:block;font:700 1.7rem/1.1 Fraunces,Georgia,serif;color:var(--gold);margin-top:3px}.sim-card span{font-size:.74rem;color:var(--mu)}
+.mode{display:flex;gap:6px;margin-bottom:14px}.mode button{flex:1;border:1px solid var(--ln);background:var(--gl);padding:10px;border-radius:12px;font-weight:800}.mode button.on{background:var(--tx);color:var(--bg)}
+.impact{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--ln)}.impact:last-child{border-bottom:0}.impact>span:first-child{min-width:0}.impact small{display:block;color:var(--mu);font-size:.76rem}.impact .delta{flex:none;font-weight:800}.delta.up{color:var(--bad)}.delta.down{color:var(--ok)}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}.dgrid,.sim-grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr}.searchbar{flex-wrap:wrap}.searchbar .count{margin-left:auto}}
+@media(max-width:520px){.kpis{grid-template-columns:1fr 1fr}.kpi{padding:14px}}
+
+.prod-components{display:grid;gap:8px;margin-bottom:10px}.prow{display:grid;grid-template-columns:100px minmax(100px,1fr) 76px 76px 38px;gap:7px;align-items:center}.prow input,.prow select{margin:0;min-width:0;padding:8px}.costtree{display:grid;gap:10px}.costgroup{padding:12px 14px;border-radius:15px;background:var(--gl);border:1px solid var(--ln)}.costgroup>strong{display:flex;justify-content:space-between;gap:10px}.costgroup small{display:block;color:var(--mu)}.subitem{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid var(--ln);font-size:.82rem}.context{display:inline-grid;place-items:center;width:16px;height:16px;margin-left:4px;border:1px solid currentColor;border-radius:50%;font-size:10px;cursor:pointer;color:var(--mu);vertical-align:middle}
+@media(max-width:520px){.prow{grid-template-columns:1fr 76px 38px}.prow .ctype,.prow .citem{grid-column:span 1}.prow .cru{grid-column:2}.prow .prq{grid-column:1}.prow .x{grid-column:3;grid-row:2}}
+
+
+/* ===== Cabeçalho V4: banner de marca ===== */
+@keyframes hzPop{from{opacity:0;transform:scale(.4)}}@keyframes hzFlt{to{translate:0 -12px}}@keyframes hzDr{to{transform:translate(34px,24px) scale(1.12)}}@keyframes hzShn{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}@keyframes hzMq{to{transform:translateX(-50%)}}@keyframes hzIn{from{opacity:0;transform:translateY(12px)}}
+header.top{display:flex!important;flex-direction:column;align-items:stretch!important;justify-content:space-between;gap:0!important;position:relative;overflow:hidden;min-height:272px;padding:30px 32px 0!important;border-radius:36px;margin-bottom:28px;background:linear-gradient(135deg,color-mix(in srgb,var(--berry) 20%,var(--sh)),var(--sh) 58%,color-mix(in srgb,var(--gold) 26%,var(--sh)));border:1px solid color-mix(in srgb,var(--gold) 42%,var(--ln));box-shadow:0 30px 70px rgba(80,25,40,.14),inset 0 1px 0 rgba(255,255,255,.6);animation:hzIn .7s cubic-bezier(.2,.7,.2,1) both}
+header.top::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);transform:translateX(-130%);animation:hzShn 8s ease-in-out infinite;pointer-events:none;z-index:3}
+header.top::after{inset:0;right:0;top:0;width:auto;height:auto;border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg stroke-linecap='round' stroke-width='6'%3E%3Cpath d='M20 30l10-6' stroke='%23d93455'/%3E%3Cpath d='M80 18l-3 11' stroke='%23f0ce91'/%3E%3Cpath d='M120 50l11 4' stroke='%2365d28a'/%3E%3Cpath d='M40 80l9 7' stroke='%23f0ce91'/%3E%3Cpath d='M100 100l-10 6' stroke='%23d93455'/%3E%3Cpath d='M135 125l4-10' stroke='%23f0ce91'/%3E%3Cpath d='M60 130l-8-8' stroke='%2365d28a'/%3E%3Cpath d='M12 120l10 3' stroke='%23d93455'/%3E%3C/g%3E%3C/svg%3E");opacity:.3;-webkit-mask-image:linear-gradient(100deg,transparent 30%,#000 90%);mask-image:linear-gradient(100deg,transparent 30%,#000 90%);pointer-events:none;z-index:0}
+.hz{position:absolute;inset:0;pointer-events:none;z-index:1}.hz .orb{position:absolute;border-radius:50%;filter:blur(46px);animation:hzDr 14s ease-in-out infinite alternate}.hz .o1{width:300px;height:300px;right:-40px;top:-90px;background:rgba(229,105,124,.34)}.hz .o3{width:170px;height:170px;right:230px;top:30px;background:rgba(255,140,165,.5);animation-delay:-3s}.hz .o2{width:260px;height:260px;right:260px;bottom:-130px;background:rgba(236,196,128,.42);animation-delay:-7s}
+.swd{position:absolute;display:grid;place-items:center;border-radius:34px;background:linear-gradient(135deg,rgba(255,255,255,.52),rgba(255,255,255,.14));-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1.5px solid rgba(255,255,255,.72);box-shadow:0 22px 44px rgba(80,25,40,.2),inset 0 2px 0 rgba(255,255,255,.85),inset 0 -2px 8px rgba(255,255,255,.28);animation:hzPop .9s cubic-bezier(.2,.8,.2,1) both,hzFlt 6s ease-in-out infinite alternate}.swd svg{width:76%;height:76%;filter:drop-shadow(0 8px 10px rgba(60,20,30,.32))}.swd::after{content:"";position:absolute;left:9%;top:5%;width:58%;height:26%;border-radius:50%;background:linear-gradient(rgba(255,255,255,.75),transparent);opacity:.75;pointer-events:none}.swd.s1{width:112px;height:112px;right:175px;top:44px;rotate:-10deg;animation-delay:.2s,1s}.swd.s2{width:128px;height:128px;right:32px;top:66px;rotate:9deg;animation-delay:.4s,1.4s}.swd.s3{width:108px;height:108px;right:250px;top:92px;rotate:-6deg;animation-delay:.6s,1.8s}
+.fch{position:absolute;display:flex;flex-direction:column;padding:8px 16px;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.52),rgba(255,255,255,.14));-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);border:1.5px solid rgba(255,255,255,.72);box-shadow:0 18px 36px rgba(80,25,40,.16),inset 0 2px 0 rgba(255,255,255,.8);color:#341a20;line-height:1.1;animation:hzPop .8s cubic-bezier(.2,.8,.2,1) both,hzFlt 5s ease-in-out infinite alternate}.fch b{font:700 1.02rem Fraunces,'Bitstream Charter',Georgia,serif}.fch small{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7a5b57}
+.fch.c1{right:200px;top:26px;animation-delay:.8s,1.6s}.fch.c2{right:16px;top:162px;animation-delay:1s,2s}.fch.c3{right:140px;top:168px;animation-delay:1.2s,2.4s}
+
+.tm{position:relative;z-index:2;display:flex;align-items:center;width:38%;min-height:190px;padding-bottom:8px}
+.top .brand-logo{height:auto;width:220px;max-width:100%;display:block;margin:0!important;filter:drop-shadow(0 10px 20px rgba(120,40,60,.2))}
+:root[data-theme=dark] .top .brand-logo{background:#fbf3ea;border-radius:20px;padding:8px 18px}
+.mq{position:relative;z-index:2;margin:20px -32px 0;overflow:hidden;border-top:1px solid color-mix(in srgb,var(--gold) 40%,var(--ln));background:color-mix(in srgb,var(--sh) 62%,transparent);padding:11px 0}
+.tk{display:flex;gap:34px;width:max-content;animation:hzMq 42s linear infinite}.tk span{font:600 .98rem Fraunces,'Bitstream Charter',Georgia,serif;color:var(--mu);white-space:nowrap}.tk span::after{content:"✦";color:var(--gold);margin-left:34px;font-size:.8rem}
+@media(max-width:820px){.tm{width:38%}.swd.s3,.fch.c1{display:none}.swd.s1{right:150px}.swd.s2{right:40px}.fch.c3{right:130px}.fch.c2{right:24px}}
+@media(max-width:620px){header.top{min-height:0;padding:20px 18px 0!important;border-radius:30px}.tm{justify-content:center;width:100%;min-height:190px;padding:76px 0 4px}.top .brand-logo{height:auto;width:190px;max-width:70vw}.hz .swd.s1{width:84px;height:84px;left:-16px;right:auto;top:74px}.hz .swd.s2{width:92px;height:92px;right:-12px;top:60px}.fch{display:none}.mq{margin:14px -18px 0}}
+@media(prefers-reduced-motion:reduce){header.top,header.top::before,.swd,.fch,.orb,.tk{animation:none!important}}
+
+/* Auth + admin */
+.auth-screen{min-height:100vh;display:grid;place-items:center;padding:24px}
+.auth-card{width:min(460px,100%);padding:28px;border-radius:28px;background:var(--gl);border:1px solid var(--ln);backdrop-filter:blur(18px);box-shadow:0 24px 80px rgba(0,0,0,.25)}
+.auth-card .brand-logo{width:min(220px,70%);margin:0 auto 18px}
+.auth-card h2{font-size:2rem;text-align:center}.auth-card>p{text-align:center;color:var(--mu);margin:8px 0 22px}
+.auth-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.auth-actions>*{flex:1}
+.auth-msg{min-height:22px;margin-top:12px;font-size:.82rem;color:var(--mu)}
+.link-btn{display:block;margin:10px auto 0;border:0;background:none;color:var(--gold);font:600 .78rem/1.2 Inter,Arial,sans-serif;cursor:pointer;padding:6px}.link-btn:hover{text-decoration:underline}
+.admin-summary{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-bottom:16px}.admin-chart{min-height:320px}.admin-chart svg{width:100%;height:260px;display:block}.admin-chart .chart-label{fill:var(--mu);font-size:11px}.admin-chart .chart-grid{stroke:var(--ln);stroke-width:1}.admin-chart .chart-line{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.admin-chart .chart-area{fill:var(--gold);opacity:.08}.admin-chart .chart-dot{fill:var(--gold);stroke:var(--bg);stroke-width:3}.admin-user-table-wrap{overflow:auto}.admin-user-table{width:100%;border-collapse:collapse;font-size:.82rem}.admin-user-table th,.admin-user-table td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--ln);white-space:nowrap}.admin-user-table th{color:var(--mu);font-weight:600}.role-pill{display:inline-flex;padding:4px 8px;border-radius:999px;background:var(--gl);border:1px solid var(--ln);font-size:.7rem}.role-pill.admin{color:var(--gold)}
+@media(max-width:850px){.admin-summary{grid-template-columns:1fr}}
+.account{position:absolute;top:14px;right:16px;z-index:20;display:flex;justify-content:flex-end}
+.account-trigger{display:grid;place-items:center;width:42px;height:42px;padding:0;border-radius:50%}
+.account-trigger svg{width:21px;height:21px}
+.account-menu{position:absolute;top:calc(100% + 8px);right:0;width:min(300px,calc(100vw - 36px));padding:16px;border:1px solid var(--ln);border-radius:16px;background:var(--sh);box-shadow:0 16px 40px rgba(0,0,0,.28)}
+.account-menu strong,.account-menu small{display:block;overflow-wrap:anywhere}
+.account-menu small{margin-top:3px;color:var(--mu);font-size:.82rem}
+.account-menu button{width:100%;margin-top:14px}
+.admin-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.admin-kpi{padding:18px;border-radius:20px;background:var(--gl);border:1px solid var(--ln)}
+.admin-kpi small{display:block;color:var(--mu);font-size:.72rem}.admin-kpi b{display:block;font:700 clamp(1.5rem,4vw,2.2rem)/1.1 Fraunces,Georgia,serif;color:var(--gold);margin-top:4px}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.admin-table{width:100%;border-collapse:collapse;font-size:.82rem}.admin-table th,.admin-table td{text-align:left;padding:10px 6px;border-bottom:1px solid var(--ln)}.admin-table th{color:var(--mu);font-weight:600}
+@media(max-width:700px){.admin-kpis{grid-template-columns:1fr 1fr}.admin-grid{grid-template-columns:1fr}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div id="auth-screen" class="auth-screen" hidden>
+  <div class="auth-card">
+    <img class="brand-logo" src="logo-docecusto.svg" alt="Doce Custo">
+    <h2 id="auth-title">Entrar</h2>
+    <p id="auth-subtitle">Acesse suas receitas, insumos e preços de qualquer dispositivo.</p>
+    <form id="auth-form">
+      <label>E-mail<input id="auth-email" type="email" autocomplete="email" required placeholder="voce@email.com"></label>
+      <label id="auth-password-wrap">Senha<input id="auth-password" type="password" autocomplete="current-password" minlength="6" placeholder="••••••••"></label>
+      <label id="auth-license-wrap" hidden>
+  Código da licença
+  <input
+    id="auth-license"
+    type="text"
+    autocomplete="off"
+    placeholder="DC-XXXX-XXXX-XXXX"
+  >
+</label>
+      <label id="auth-password-confirm-wrap" hidden>Confirmar senha<input id="auth-password-confirm" type="password" autocomplete="new-password" minlength="6" placeholder="••••••••"></label>
+      <label id="auth-name-wrap" hidden>Nome<input id="auth-name" type="text" autocomplete="name" placeholder="Seu nome"></label>
+      <div class="auth-actions">
+        <button class="pri" id="auth-submit" type="submit">Entrar</button>
+        <button class="ghost" id="auth-toggle" type="button">Criar conta</button>
+      </div>
+      <button class="link-btn" id="auth-forgot" type="button">Esqueci minha senha</button>
+      <div id="auth-msg" class="auth-msg"></div>
+    </form>
+  </div>
+</div>
+
+<div id="shell" hidden>
+<header class="top"><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="bri" viewBox="0 0 200 200"><path d="M42 122L158 122L142 178L58 178Z" fill="#f2b9c2"/><path d="M62 122L68 178M82 122L84 178M100 122V178M118 122L116 178M138 122L132 178" stroke="#e5697c" stroke-width="3" fill="none"/><circle cx="100" cy="96" r="60" fill="#3b1d12"/><path d="M62 82l8 3M86 62l3 8M112 60l-2 9M134 80l-8 4M70 108l9-2M96 86l6 6M122 100l8-3M142 102l-7 6M80 128l8 2M108 120l7 4M92 110l2 8M128 122l-4 7" stroke="#7a4631" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M74 96l7-4M104 74l-3 8M118 110l-6 5M90 130l5-5M136 92l-5-3" stroke="#1d0d07" stroke-width="5" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="stw" viewBox="0 0 200 200"><path d="M100 188C58 162 28 122 36 80C44 50 80 46 100 60C120 46 156 50 164 80C172 122 142 162 100 188Z" fill="#d93455"/><path d="M36 80C44 50 80 46 100 60C120 46 156 50 164 80C168 100 162 114 154 126C132 108 118 134 100 120C82 134 68 108 46 126C38 114 32 100 36 80Z" fill="#4a2418"/><path d="M58 72C70 64 82 64 92 70" stroke="#fff" stroke-opacity=".35" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M58 96L142 82M62 108L138 96" stroke="#fbf3ea" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M100 60C88 36 70 36 62 44C76 48 86 54 100 60ZM100 60C112 36 130 36 138 44C124 48 114 54 100 60Z" fill="#65a86f"/></symbol>
+<symbol id="cak" viewBox="0 0 200 200"><ellipse cx="100" cy="176" rx="82" ry="12" fill="#f2b9c2"/><path d="M40 112H160V166H40Z" fill="#f7e2c6"/><path d="M40 134H160" stroke="#e5697c" stroke-width="12"/><path d="M34 112C34 86 56 80 72 90C82 70 120 70 130 90C146 80 166 86 166 112Z" fill="#fff"/><circle cx="100" cy="68" r="19" fill="#d93455"/><path d="M100 52C92 40 82 42 80 46C88 48 94 50 100 52ZM100 52C108 40 118 42 120 46C112 48 106 50 100 52Z" fill="#65a86f"/></symbol></defs></svg>
+<div class="hz" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+<span class="swd s1"><svg viewBox="0 0 200 200"><use href="#bri"/></svg></span><span class="swd s2"><svg viewBox="0 0 200 200"><use href="#stw"/></svg></span><span class="swd s3"><svg viewBox="0 0 200 200"><use href="#cak"/></svg></span>
+<span class="fch c1"><b>R$ 2,40</b><small>custo</small></span><span class="fch c2"><b>60%</b><small>margem</small></span><span class="fch c3"><b>R$ 6,00</b><small>preço</small></span></div>
+
+<div class="account">
+  <button class="ghost account-trigger" type="button" data-a="account-toggle" aria-label="Abrir informações da conta" aria-haspopup="true" aria-expanded="false" aria-controls="account-menu">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c.7-3.5 3.1-5.2 7-5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 20c-.7-3.5-3.1-5.2-7-5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <div class="account-menu" id="account-menu" hidden>
+    <strong id="account-name"></strong>
+    <small id="account-email"></small>
+    <button class="ghost" type="button" data-a="logout">Sair</button>
+  </div>
+</div>
+<div class="tm"><img class="brand-logo" src="logo-docecusto.svg" alt="Doce Custo"></div>
+<div class="mq" aria-hidden="true"><div class="tk"><span>Custo por grama</span><span>Margem real</span><span>Preço no iFood</span><span>Lista de compras</span><span>Alerta de reajuste</span><span>Mão de obra</span><span>Perdas e quebra</span><span>Lista para WhatsApp</span><span>Custo por grama</span><span>Margem real</span><span>Preço no iFood</span><span>Lista de compras</span><span>Alerta de reajuste</span><span>Mão de obra</span><span>Perdas e quebra</span><span>Lista para WhatsApp</span></div></div></header>
+<nav id="nav"><button data-a="tab" data-id="dash">Início</button><button data-a="tab" data-id="ins">Insumos</button><button data-a="tab" data-id="rec">Receitas</button><button data-a="tab" data-id="prod">Produtos</button><button data-a="tab" data-id="pre">Preço</button><button data-a="tab" data-id="admin" id="admin-nav" hidden>Admin</button></nav>
+<button class="mobile-nav-toggle" type="button" data-a="mobile-nav-toggle" aria-label="Ocultar menu" title="Ocultar menu" aria-controls="nav" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 10 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<main id="app"></main>
+<footer class="app-footer">
+  <p>Criado por Dois Amores Doceria &amp; Aston Studio Digital</p>
+  <a class="support-link" href="https://wa.me/554299862356?text=Ol%C3%A1%21%20Preciso%20de%20suporte%20no%20Doce%20Custo." target="_blank" rel="noopener noreferrer" aria-label="Falar com o suporte pelo WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.1 11.7a8.1 8.1 0 0 1-12 7.1L4 20l1.2-4a8.1 8.1 0 1 1 14.9-4.3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8.4c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.6 1.4c.1.2 0 .4-.1.6l-.5.6c-.1.2-.2.3 0 .5.5.9 1.2 1.5 2.1 2 .2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.5-.1l1.4.7c.2.1.3.2.3.4 0 .3-.2 1-.6 1.3-.4.4-1 .6-1.6.5-1-.1-2.2-.7-3.4-1.7-1-.9-1.7-2-1.9-2.9-.2-.8.1-1.7.5-2.2Z" fill="currentColor"/></svg>
+    Suporte pelo WhatsApp
+  </a>
+</footer>
+</div>
+<div id="ov" hidden><div class="sheet" id="sh"></div></div>
+<div id="toast" hidden></div>
+<script>
+const $=s=>document.querySelector(s), K='docecusto:v1', U=['g','kg','ml','L','un'];
+/* Supabase: cole aqui o Project URL e a Publishable Key do seu projeto. Nunca coloque a Secret/Service Role Key no navegador. */
+const SUPABASE_URL='https://pofviqmpthyteodifqza.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_o5aheIzqupQwl9D__olMPw_n5XMFcZi';
+const sbConfigured=!SUPABASE_URL.startsWith('COLE_')&&!SUPABASE_PUBLISHABLE_KEY.startsWith('COLE_');
+const supabaseClient=sbConfigured?supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}}):null;
+let currentUser=null,currentProfile=null,cloudReady=false,authMode='login';
+const R=v=>(+v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const R4=v=>(+v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2,maximumFractionDigits:4});
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const id=()=>Math.random().toString(36).slice(2,9), UB={kg:['g',1000],g:['g',1],L:['ml',1000],ml:['ml',1],un:['un',1]};
+let D,tab='dash',rid=null,rtype='recipe',mem=null,tt,searchTimer;
+const td=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function seed(){const a=(nome,un,qtd,preco)=>({id:id(),nome,un,qtd,preco,hist:[{d:td(),p:preco}]}),c=a('Chocolate em pó 50%','g',200,9.9),l=a('Leite condensado','g',395,6.5),m=a('Manteiga','g',200,12.9),g=a('Granulado','g',500,14),f=a('Forminhas (pacote)','un',100,9);const r={id:id(),nome:'Brigadeiro tradicional (exemplo)',rend:30,un:'un',itens:[{i:l.id,q:395,u:'g'},{i:c.id,q:50,u:'g'},{i:m.id,q:20,u:'g'},{i:g.id,q:100,u:'g'},{i:f.id,q:30,u:'un'}]};return{insumos:[c,l,m,g,f],receitas:[r],produtos:[{id:id(),nome:'Brigadeiro tradicional (produto exemplo)',un:'un',componentes:[{r:r.id,q:1}],emb:0,mao:12,indPct:21,perda:3,margem:60,atual:0}]}}
+function load(){try{const t=localStorage.getItem(K);if(t){const d=JSON.parse(t);if(Array.isArray(d.insumos)&&Array.isArray(d.receitas))return d}}catch(e){}return mem||seed()}
+function fix(){
+D.canais=D.canais||[{n:'Venda direta',t:0},{n:'Cartão de crédito',t:4},{n:'iFood',t:25}];
+D.loja=D.loja||'Doces';D.produtos=Array.isArray(D.produtos)?D.produtos:[];D.insumos=D.insumos||[];D.receitas=D.receitas||[];
+D.costDefaultsVersion=Number(D.costDefaultsVersion)||0;
+D.recipeComponentUnitsVersion=Number(D.recipeComponentUnitsVersion)||0;
+D.insumos.forEach(n=>{n.id=n.id||id();n.hist=n.hist||[];n.aproveitamentos=Array.isArray(n.aproveitamentos)?n.aproveitamentos.map(a=>({id:a.id||id(),nome:String(a.nome||a.name||'').trim(),quantidade:Number(a.quantidade ?? a.qtd ?? 0),pesoMedio:Number(a.pesoMedio ?? a.peso ?? 0)})).filter(a=>a.nome&&a.quantidade>0&&a.pesoMedio>0):[];if(!n.hist.length&&n.preco>0)n.hist=[{d:'',p:n.preco}];});
+D.receitas.forEach(r=>{r.itens=r.itens||[];r.rend=+r.rend||1;r.un=r.un||'un';if(r.itens.length){const m=r.itens.map(t=>{const n=ins(t.i);if(n&&n.aproveitamentos&&n.aproveitamentos.length&&!t.a)t.a=n.aproveitamentos[0].id;return t});r.itens=m}});
+if(!D.produtos.length&&D.receitas.length)D.produtos=D.receitas.map(r=>({id:id(),nome:r.nome,un:r.un||'un',componentes:[{r:r.id,q:1}],emb:+r.emb||0,mao:(+r.mao||0)+((+r.tempo||0)/60*(D.hora||0)),indPct:21,perda:+r.perda||3,margem:+r.margem||60,atual:+r.atual||0}));
+if(D.recipeComponentUnitsVersion<1){D.produtos.forEach(p=>(p.componentes||[]).forEach(c=>{if(c.r&&!c.u){const r=D.receitas.find(x=>x.id===c.r);if(r){c.q=(+c.q||0)*(+r.rend||1);c.u=r.un||'un'}}}));D.recipeComponentUnitsVersion=1}
+D.produtos.forEach(p=>{p.componentes=p.componentes||[];p.emb=+p.emb||0;p.mao=+p.mao||0;const pct=Number(p.indPct);p.indPct=p.indPct===undefined||!Number.isFinite(pct)||Math.abs(pct-Math.round(pct*100)/100)>1e-8?21:Math.max(0,pct);delete p.ind;p.perda=D.costDefaultsVersion<1&&(p.perda===undefined||+p.perda===0)?3:p.perda===undefined?3:(+p.perda||0);p.margem=+p.margem||60;p.atual=+p.atual||0;p.un=p.un||'un'});
+D.costDefaultsVersion=1;
+delete D.hora}
+function save(){
+  mem=D;
+  try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
+  if(cloudReady&&currentUser) saveCloud();
+}
+let saveTimer=null;
+async function saveCloud(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(async()=>{
+    if(!cloudReady||!currentUser)return;
+    const payload={user_id:currentUser.id,data:D,updated_at:new Date().toISOString()};
+    const {error}=await supabaseClient.from('user_data').upsert(payload,{onConflict:'user_id'});
+    if(error)console.error('Erro ao salvar no Supabase:',error);
+  },350);
+}
+async function loadCloud(){
+  const {data,error}=await supabaseClient.from('user_data').select('data').eq('user_id',currentUser.id).maybeSingle();
+  if(error)throw error;
+  if(data?.data&&Array.isArray(data.data.insumos)&&Array.isArray(data.data.receitas)){
+    D=data.data;fix();mem=D;localStorage.setItem(K,JSON.stringify(D));return true;
+  }
+  return false;
+}
+D=load();fix();
+function ins(i){return D.insumos.find(x=>x.id===i)}
+const uc=n=>{const[b,f]=UB[n.un]||UB.un;return{b,p:n.qtd>0?n.preco/(n.qtd*f):0}}, ctext=n=>{if(Array.isArray(n.aproveitamentos)&&n.aproveitamentos.length){const r=calcAproveitamentoResumo(n);return r.itens.length?`${R4(r.custoPorGrama)}/g · ${R(r.totalPrice)} / ${r.totalYield.toFixed(0)} g`:R4(n.preco||0)+' / '+(n.un||'un')};const{b,p}=uc(n);return b==='un'?R4(p)+'/un.':R4(p)+'/'+b+' · '+R(p*1000)+'/'+(b==='g'?'kg':'L')};
+function normalizeAproveitamento(a){if(!a||typeof a!=='object')return null;const nome=String(a.nome||a.name||'').trim();if(!nome)return null;const quantidade=Number(a.quantidade ?? a.qtd ?? 0);const pesoMedio=Number(a.pesoMedio ?? a.peso ?? 0);return{id:String(a.id||id()),nome,quantidade:Number.isFinite(quantidade)&&quantidade>0?quantidade:0,pesoMedio:Number.isFinite(pesoMedio)&&pesoMedio>0?pesoMedio:0}};
+function aproveitamentoPorId(n,aId){if(!n||!Array.isArray(n.aproveitamentos))return null;return n.aproveitamentos.map(normalizeAproveitamento).filter(Boolean).find(a=>a.id===String(aId))||null}
+function calcAproveitamentoResumo(n){const itens=(Array.isArray(n.aproveitamentos)?n.aproveitamentos:[]).map(normalizeAproveitamento).filter(Boolean);const estimatedYield=itens.reduce((s,a)=>s+(Number(a.quantidade)||0)*(Number(a.pesoMedio)||0),0);const totalPrice=Number(n.preco)||0,{b,p}=uc(n);const massPackage=b==='g'&&Number(n.qtd)>0,totalYield=massPackage?Number(n.qtd)*(n.un==='kg'?1000:1):estimatedYield,custoPorGrama=massPackage?p:(totalYield>0?totalPrice/totalYield:0),countScale=massPackage&&estimatedYield>0?totalYield/estimatedYield:1;return{itens:itens.map(a=>{const quantidade=(Number(a.quantidade)||0)*countScale,pesoTotal=quantidade*(Number(a.pesoMedio)||0);return{...a,quantidade,pesoTotal,custoUnitario:(Number(a.pesoMedio)||0)*custoPorGrama}}),totalYield,totalPrice,custoPorGrama}};
+function calcAproveitamentoUnit(n,a){if(!n||!a)return 0;const ap=aproveitamentoPorId(n,a.id||a);if(!ap)return 0;const resumo=calcAproveitamentoResumo(n);const item=resumo.itens.find(x=>x.id===String(ap.id));return item?item.custoUnitario:0}
+function line(t){const n=ins(t.i);if(!n)return{c:0,w:'insumo removido'};if(t.a){const a=aproveitamentoPorId(n,t.a);if(a){const c=calcAproveitamentoUnit(n,a);if((t.u||'un')!=='un')return{c:0,w:'unidade incompatível (aproveitamento usa unidade por peça)'};return{c:(+t.q||0)*c,w:''}}}const[b1,f1]=UB[t.u]||UB.un,{b,p}=uc(n);return b1!==b?{c:0,w:'unidade incompatível (compra em '+n.un+')'}:{c:(+t.q||0)*f1*p,w:''}}
+function calc(r){const L=(r.itens||[]).map(t=>({it:t,n:ins(t.i),...line(t)})),ing=L.reduce((s,l)=>s+l.c,0);return{L,ing,tot:ing,un:ing/(r.rend||1),perda:0}}
+function calcP(p,path=new Set()){if(path.has(p.id))return{groups:[],base:0,perda:0,ind:0,tot:0,un:0,cycle:true};const next=new Set(path);next.add(p.id);const groups=(p.componentes||[]).map(x=>{const q=+x.q||0;if(x.p){const product=D.produtos.find(y=>y.id===x.p);if(!product)return{type:'product',name:'Produto removido',q,c:0};const child=calcP(product,next);return{type:'product',name:product.nome,q,unit:product.un||'un',c:child.base*q,child}}if(x.i){const n=ins(x.i);if(!n)return{type:'ingredient',name:'Insumo removido',q,c:0};const item=line(x);return{type:'ingredient',name:n.nome,q,u:x.u,c:item.c,w:item.w}}const r=D.receitas.find(y=>y.id===x.r);if(!r)return{type:'recipe',name:'Receita removida',q,c:0};const unit=x.u||r.un,from=UB[unit]||UB.un,to=UB[r.un]||UB.un;if(from[0]!==to[0])return{type:'recipe',name:r.nome,q,unit,c:0,factor:0,w:'unidade incompatível'};const amount=q*from[1]/to[1],factor=amount/(+r.rend||1),cost=calc(r),items=cost.L.map(l=>({...l,scaled:(l.c||0)*factor}));return{type:'recipe',name:r.nome,q,unit,c:cost.un*amount,factor,items}}),base=groups.reduce((s,g)=>s+g.c,0),overheadBase=groups.reduce((s,g)=>s+(g.type==='product'?0:g.c),0)+(p.emb||0)+(p.mao||0),ind=overheadBase*(p.indPct||0)/100,sub=base+(p.emb||0)+(p.mao||0)+ind,perda=sub*(p.perda||0)/100,tot=sub+perda;return{groups,base,ind,perda,tot,un:tot}}
+function canIncludeProduct(ownerId,candidateId,seen=new Set()){if(candidateId===ownerId||seen.has(candidateId))return false;const candidate=D.produtos.find(p=>p.id===candidateId);if(!candidate)return false;const next=new Set(seen);next.add(candidateId);return(candidate.componentes||[]).every(c=>!c.p||(c.p!==ownerId&&canIncludeProduct(ownerId,c.p,next)))}
+const mcls=(m,r)=>m>=r.margem?'g':m>=r.margem-10?'y':'r';
+const termHelp=(term)=>{const key=term.toLowerCase();const text=key.includes('margem')?'Margem é a parte do preço de venda que sobra como lucro depois de descontar o custo.':key.includes('custos indiretos')?'Percentual aplicado aos ingredientes, mão de obra e embalagem deste produto. Os custos próprios de produtos incluídos são contabilizados apenas no produto filho.':key.includes('perda')?'Percentual para cobrir perdas, quebras, sobras ou desperdícios durante a produção.':key.includes('mão de obra')?'Valor do seu trabalho aplicado à produção deste produto.':key.includes('embalagem')?'Custo das embalagens usadas para entregar ou vender o produto.':'Informação adicional sobre este campo.';return`<span class="term-help">${term}<span class="help-tip" data-tip="${text}" aria-label="O que significa ${term}?" role="button" tabindex="0">i</span></span>`};
+const mpill=r=>{if(!(r.atual>0))return'';const c=calc(r),m=(r.atual-c.un)/r.atual*100;return`<span class="pl ${mcls(m,r)}">${termHelp('Margem')} ${m.toFixed(0)}%</span>`};
+const ppill=p=>{if(!(p.atual>0))return'';const c=calcP(p),m=(p.atual-c.un)/p.atual*100;return`<span class="pl ${mcls(m,p)}">${termHelp('Margem')} ${m.toFixed(0)}%</span>`};
+const cpr=(o,t)=>{const suggested=cprSuggested(o),net=1-(+t||0)/100;return Number.isFinite(suggested)&&suggested>=0&&net>0?R(suggested/net):'—'};
+const chg=n=>{const h=n.hist||[];return h.length>1&&h[h.length-2].p>0?h[h.length-1].p/h[h.length-2].p-1:null};
+const cpill=n=>{const c=chg(n);return c===null||c===0?'':`<span class="pl ${c>0?'r':'g'}">${c>0?'▲':'▼'} ${Math.abs(c*100).toFixed(1)}%</span>`};
+const head=(t,p,a,b,extra='')=>`<div class="hd"><div><h2>${t}</h2><p>${p}</p></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button class="pri" data-a="${a}">+ ${b}</button>${extra}</div></div>`;
+const empty=t=>`<div class="empty">${t}</div>`;
+function vDash(){const totalR=D.receitas.length,totalI=D.insumos.length,totalP=D.produtos.length;const recent=D.insumos.map(n=>({n,c:chg(n),d:n.hist&&n.hist[n.hist.length-1]?.d})).filter(x=>{if(x.c===null||x.c===0||!x.d)return false;const age=(Date.now()-new Date(x.d+'T12:00:00'))/864e5;return age>=0&&age<=30}).sort((a,b)=>Math.abs(b.c)-Math.abs(a.c)).slice(0,4);const top= D.receitas.map(r=>({r,c:calc(r)})).sort((a,b)=>a.c.un-b.c.un).slice(0,5);
+return `<div class="hd"><div><h2>Olá, ${esc(currentProfile?.full_name || "Doceira")}. ✨</h2><p>Uma visão rápida dos seus custos e preços.</p></div></div>
+<div class="kpis"><div class="kpi"><small>Receitas</small><b>${totalR}</b><div class="sub">cadastradas</div></div><div class="kpi"><small>Insumos</small><b>${totalI}</b><div class="sub">em sua base</div></div><div class="kpi"><small>Produtos</small><b>${totalP}</b><div class="sub">cadastrados</div></div></div>
+<div class="quick"><button data-a="add-rec"><b>＋ Nova receita</b><small>Monte uma receita base</small></button><button data-a="add-prod"><b>＋ Novo produto</b><small>Combine receitas e custos finais</small></button><button data-a="sim"><b>⌁ Simular preço</b><small>Teste margem e canais</small></button></div>
+<div class="dgrid"><div class="card"><h3>Receitas para acompanhar</h3>${top.length?'<div class="mini-list">'+top.map(o=>`<div class="ln"><span>${esc(o.r.nome)}<small>${R(o.c.un)} por ${o.r.un==='un'?'unidade':o.r.un}</small></span><button data-a="price" data-id="${o.r.id}">Abrir →</button></div>`).join('')+'</div>':empty('Cadastre sua primeira receita para começar.')}</div><div class="card"><h3>⚠️ Atenção</h3>${recent.length?recent.map(({n,c})=>`<div class="impact"><span>${esc(n.nome)}<small>preço ${c>0?'aumentou':'diminuiu'}</small></span><span class="delta ${c>0?'up':'down'}">${c>0?'▲ +':'▼ '}${(c*100).toFixed(1)}%</span></div>`).join(''):'<p class="mu">Nenhuma alteração de preço nos últimos 30 dias.</p>'}</div></div>`}
+function vIns(){const q=(document.querySelector('#qins')?.value||'').toLowerCase();const arr=D.insumos.filter(n=>n.nome.toLowerCase().includes(q));return head('Insumos','O que você compra e quanto custa cada embalagem.','add-ins','Novo insumo','')+`<div class="searchbar"><input id="qins" placeholder="Buscar insumo..." value="${esc(q)}"><span class="count">${arr.length} de ${D.insumos.length}</span></div>`+(arr.length?'<div class="list">'+arr.map(n=>`<div class="row"><div><b>${esc(n.nome)}</b><small>${n.qtd} ${n.un} · ${R(n.preco)}${cpill(n)}</small></div><div class="cost">${ctext(n)}</div><div class="acts"><button data-a="edit-ins" data-id="${n.id}">Editar</button><button data-a="del-ins" data-id="${n.id}">Excluir</button></div></div>`).join('')+'</div>':empty(q?'Nenhum insumo encontrado.':'Nenhum insumo ainda. Cadastre o primeiro para começar.'))}
+function vRec(){const q=(document.querySelector('#qrec')?.value||'').toLowerCase();const arr=D.receitas.filter(r=>r.nome.toLowerCase().includes(q));return head('Receitas','Crie as bases e receitas que serão usadas nos seus produtos.','add-rec','Nova receita',`<button class="ghost" data-a="enc">Calcular compras</button>`)+`<div class="searchbar"><input id="qrec" placeholder="Buscar receita..." value="${esc(q)}"><span class="count">${arr.length} de ${D.receitas.length}</span></div>`+(arr.length?'<div class="list">'+arr.map(r=>{const c=calc(r),w=c.L.some(l=>l.w);return`<div class="row"><div><b>${esc(r.nome)}</b><small>Rende ${r.rend} ${r.un} · ${r.itens.length} ingredientes${w?' · <span class="bd">revisar unidades</span>':''}</small></div><div class="cost">${R(c.un)}<small>por ${r.un==='un'?'unidade':r.un}</small></div><div class="acts"><button data-a="edit-rec" data-id="${r.id}">Editar</button><button data-a="del-rec" data-id="${r.id}">Excluir</button></div></div>`}).join('')+'</div>':empty(q?'Nenhuma receita encontrada.':'Nenhuma receita ainda.'))}
+function vProd(){const q=(document.querySelector('#qprod')?.value||'').toLowerCase();const arr=D.produtos.filter(p=>p.nome.toLowerCase().includes(q));return head('Produtos','Combine receitas, insumos e outros produtos.','add-prod','Novo produto',`<button class="ghost" data-a="tab" data-id="pre">Precificação</button>`)+`<div class="searchbar"><input id="qprod" placeholder="Buscar produto..." value="${esc(q)}"><span class="count">${arr.length} de ${D.produtos.length}</span></div>`+(arr.length?'<div class="list">'+arr.map(p=>{const c=calcP(p),count=p.componentes.length;return`<div class="row"><div><b>${esc(p.nome)}</b><small>${count} componente${count!==1?'s':''} · custo ${R(c.un)}${ppill(p)}</small></div><div class="cost">${p.atual?R(p.atual):'—'}<small>preço atual</small></div><div class="acts"><button data-a="price-prod" data-id="${p.id}">Precificar</button><button data-a="dup-prod" data-id="${p.id}">Duplicar</button><button data-a="edit-prod" data-id="${p.id}">Editar</button><button data-a="del-prod" data-id="${p.id}">Excluir</button></div></div>`}).join('')+'</div>':empty(q?'Nenhum produto encontrado.':'Nenhum produto ainda.'))}
+function alerts(){const a=D.insumos.filter(n=>{const c=chg(n),l=n.hist&&n.hist[n.hist.length-1];if(!(c>0)||!l?.d)return false;const age=(Date.now()-new Date(l.d+'T12:00:00'))/864e5;return age>=0&&age<=30});return a.length?`<div class="notice"><strong>↑ ${a.length} insumo${a.length>1?'s tiveram':' teve'} reajuste nos últimos 30 dias.</strong> Revise as receitas afetadas antes de fechar novos preços.</div>`:''}
+function resH(o){const c=o.__type==='product'?calcP(o):calc(o),margin=Math.min(99,Math.max(0,+o.margem||0)),pr=c.un/(1-margin/100),lu=pr-c.un,mr=o.atual>0?(o.atual-c.un)/o.atual*100:null,u=o.un==='un'?'unidade':o.un;return`<div class="tag"><small>Preço sugerido por ${u}</small><strong>${R(pr)}</strong><span>Lucro de ${R(lu)} por ${u}</span></div>`+(mr!==null?`<p class="cmp">Hoje você cobra ${R(o.atual)}: <span class="pl ${mcls(mr,o)}">${termHelp('Margem real')} ${mr.toFixed(0)}%</span>${mr<o.margem?' abaixo da desejada':''}</p>`:'')}
+function detailP(p){const c=calcP(p);return detailGroups(c.groups)+(c.cycle?'<p class="bd">Há uma composição circular entre produtos; revise os componentes.</p>':'')}
+function detailGroups(groups,multiplier=1){return`<div class="costtree">${groups.map(g=>`<div class="costgroup"><strong><span>${esc(g.name)} <small>${g.q*multiplier} ${g.type==='ingredient'?g.u:g.unit||'un.'} · custo ${R(g.c*multiplier)}${g.w?' · '+esc(g.w):''}</small></span><b>${R(g.c*multiplier)}</b></strong>${g.type==='recipe'?g.items.map(l=>`<div class="subitem"><span>${esc(l.n?l.n.nome:'Insumo removido')}<small>${l.it.q*g.factor*multiplier} ${l.it.u}</small></span><b>${R(l.scaled*multiplier)}</b></div>`).join(''):g.type==='product'&&g.child&&!g.child.cycle?detailGroups(g.child.groups,g.q*multiplier):g.child?.cycle?'<p class="bd">Composição circular detectada.</p>':''}</div>`).join('')}</div>`}
+function vPre(){let o;if(rtype==='product')o=D.produtos.find(x=>x.id===rid)||D.produtos[0];else o=D.receitas.find(x=>x.id===rid)||D.receitas[0];if(!o)return head('Precificação','Crie uma receita ou produto para calcular.','add-rec','Nova receita')+empty('Nada para precificar ainda.');rid=o.id;o.__type=rtype;const c=rtype==='product'?calcP(o):calc(o),x=(l,v)=>v>0?`<div class="ln"><span>${l}</span><b>${R(v)}</b></div>`:'';return`<div class="hd price-head"><div><h2>Precificação</h2><p>Escolha se quer analisar uma receita ou o produto final.</p></div><div class="price-selects"><select id="pt" aria-label="Tipo de item"><option value="recipe" ${rtype==='recipe'?'selected':''}>Receita</option><option value="product" ${rtype==='product'?'selected':''}>Produto</option></select><select id="rs" aria-label="Item para precificar">${(rtype==='product'?D.produtos:D.receitas).map(q=>`<option value="${q.id}" ${q.id===o.id?'selected':''}>${esc(q.nome)}</option>`).join('')}</select></div></div><div class="two"><div class="card"><h3>${rtype==='product'?'Custo do produto final':'Custo da receita'}</h3>${rtype==='product'?detailP(o):`${barH(o)}${c.L.map(l=>`<div class="ln ${l.w?'bd':''}"><span>${esc(l.n?l.n.nome:'Insumo removido')} <small>${l.it.q} ${l.it.u}${l.w?' · '+l.w:''}</small></span><b>${R(l.c)}</b></div>`).join('')}`} ${rtype==='product'?`${x('Embalagem',o.emb)}${x('Mão de obra',o.mao)}${x('Custos indiretos ('+o.indPct+'%)',c.ind)}${x('Perda / quebra ('+o.perda+'%)',c.perda)}`:''}<div class="ln tot"><span>${rtype==='product'?'Total do produto':'Total · rende '+o.rend+' '+o.un}</span><b>${R(c.tot)}</b></div><div class="ln"><span>Custo por ${o.un==='un'?'unidade':o.un}</span><b>${R(c.un)}</b></div></div><div class="card"><label>${termHelp('Margem desejada')}: <b id="mv">${o.margem||60}%</b><input id="mg" type="range" min="0" max="90" value="${o.margem||60}"></label><label>Quanto você cobra hoje (opcional)<input id="at" type="number" inputmode="decimal" step="any" value="${o.atual||''}"></label><div id="res">${resH(o)}</div><h3 style="margin-top:22px">Preço por canal de venda</h3><div id="chs">${chH(o)}</div><button class="ghost" data-a="add-can">+ Canal</button></div></div>`}
+function barH(r){const c=calc(r);if(!(c.tot>0))return'';return`<div class="bar"><i style="width:100%;background:var(--gold)"></i></div><div class="lg"><b style="--c:var(--gold)">Ingredientes 100%</b></div>`}
+function chH(o){o.__type=o.__type||'product';return D.canais.map((c,k)=>`<div class="chr"><input class="cn" data-k="${k}" value="${esc(c.n)}" aria-label="Canal"><input class="ct" data-k="${k}" type="number" step="any" inputmode="decimal" value="${c.t}" aria-label="Taxa %"><b data-p="${k}">${cpr(o,c.t)}</b><button class="x" data-a="rm-can" data-id="${k}" aria-label="Remover">✕</button></div>`).join('')+'<p class="mu" style="font-size:.74rem;margin:6px 0 0">A taxa é aplicada sobre o preço de venda do produto. O preço sugerido é ajustado para manter a margem desejada depois da taxa.</p>'}
+const upCh=o=>document.querySelectorAll('[data-p]').forEach(p=>p.textContent=cpr(o,D.canais[+p.dataset.p].t));
+function sim(){const type=rtype==='product'?'product':'recipe',arr=type==='product'?D.produtos:D.receitas,r=arr.find(x=>x.id===rid)||arr[0];if(!r){toast('Cadastre primeiro uma receita ou produto.');return}rid=r.id;openM('Simulador de preço',`<p class="mu">Teste um preço sem alterar seu cadastro.</p><label>O que você quer simular<select id="sim-type"><option value="recipe" ${type==='recipe'?'selected':''}>Receita</option><option value="product" ${type==='product'?'selected':''}>Produto</option></select></label><label>Item<select id="sim-rec">${arr.map(q=>`<option value="${q.id}" ${q.id===r.id?'selected':''}>${esc(q.nome)}</option>`).join('')}</select></label><label>Preço de venda<input id="sp" type="number" inputmode="decimal" step="any" value="${(r.atual||cpr(r,0).replace(/[^0-9,]/g,'').replace(',','.')).toFixed(2)}"></label><div class="sim-grid" id="simout"></div><div class="mact"><button class="ghost" data-a="x">Fechar</button><button class="pri" data-a="use-sim">Usar como preço atual</button></div>`);updateSim(r,type)}
+function cprSuggested(o){const c=o.__type==='product'?calcP(o):calc(o);return c.un/(1-o.margem/100)}
+function updateSim(o,type=rtype){o.__type=type;const p=+$('#sp')?.value||0,c=type==='product'?calcP(o):calc(o),m=p>0?(p-c.un)/p*100:0,profit=p-c.un;if($('#simout'))$('#simout').innerHTML=`<div class="sim-card"><small>Custo unitário</small><b>${R(c.un)}</b><span>custo para produzir</span></div><div class="sim-card"><small>Lucro unitário</small><b>${R(profit)}</b><span>${profit>=0?'ganho':'prejuízo'} por ${o.un}</span></div><div class="sim-card">${termHelp('Margem')}<b>${m.toFixed(1)}%</b><span>sobre a venda</span></div>`}
+function renderAproveitamentoSummary(n){const items=Array.isArray(n.aproveitamentos)?n.aproveitamentos.map(normalizeAproveitamento).filter(Boolean):[];if(!items.length)return '<p class="mu">Adicione os aproveitamentos para ver o resumo.</p>';const r=calcAproveitamentoResumo({...n,preco:n.preco||0,aproveitamentos:items});const totalLine=`<div class="ln"><span>Total</span><b>${r.totalYield.toFixed(0)} g</b></div>`;const detalhamento=r.itens.map(a=>`<div class="ln"><span>${esc(a.nome)} <small>${a.quantidade.toLocaleString('pt-BR',{maximumFractionDigits:1})} × ${a.pesoMedio} g = ${a.pesoTotal.toFixed(0)} g</small></span><b>${R(a.custoUnitario)}</b></div>`).join('');const headSummary=`<div class="tag"><small>Rendimento estimado</small><strong>${r.totalYield.toFixed(0)} g</strong><span>Custo da compra ${R(r.totalPrice)} · ${R4(r.custoPorGrama)}/g</span></div>`;return `${headSummary}<div class="card" style="margin-top:12px;padding:12px"><h4 style="margin:0 0 8px">Custos calculados</h4>${detalhamento}${totalLine}</div>`}
+function updateAproveitamentosPreview(){const wrap=$('#aproveitamentos-wrap');const summary=$('#aproveitamento-summary');if(!wrap||!summary)return;const rows=[...document.querySelectorAll('.ap-row')];const payload={qtd:+$('#q').value||0,un:$('#u').value,preco:+$('#p').value||0,aproveitamentos:rows.map(row=>({id:row.dataset.apId||id(),nome:row.querySelector('.ap-nome')?.value.trim()||'',quantidade:+row.querySelector('.ap-quantidade')?.value||0,pesoMedio:+row.querySelector('.ap-peso')?.value||0}))};summary.innerHTML=renderAproveitamentoSummary(payload);wrap.hidden=!$('#has-aproveitamentos')?.checked;}
+function renderAproveitamentosEditor(n){const items=Array.isArray(n.aproveitamentos)&&n.aproveitamentos.length?n.aproveitamentos:[];const rows=items.length?items.map(a=>`<div class="irow ap-row" data-ap-id="${esc(a.id||id())}"><input class="ap-nome" value="${esc(a.nome)}" placeholder="Nome do aproveitamento"><input class="ap-quantidade" type="number" inputmode="decimal" step="any" value="${a.quantidade||''}" placeholder="Qtd."><input class="ap-peso" type="number" inputmode="decimal" step="any" value="${a.pesoMedio||''}" placeholder="g"><button class="x" data-a="rm-aproveitamento" aria-label="Remover aproveitamento">✕</button></div>`).join(''):`<div class="irow ap-row" data-ap-id="${id()}"><input class="ap-nome" value="" placeholder="Nome do aproveitamento"><input class="ap-quantidade" type="number" inputmode="decimal" step="any" value="" placeholder="Qtd."><input class="ap-peso" type="number" inputmode="decimal" step="any" value="" placeholder="g"><button class="x" data-a="rm-aproveitamento" aria-label="Remover aproveitamento">✕</button></div>`;return `<div class="card" style="margin-top:12px;padding:16px"><h4 style="margin:0 0 8px">Aproveitamentos</h4><p class="mu" style="margin:0 0 10px">O aproveitamento permite transformar um insumo comprado em diferentes unidades ou partes utilizadas nas receitas. Exemplo: uma bandeja de morangos pode gerar morangos grandes e pequenos.</p><div id="aproveitamentos-list">${rows}</div><button class="ghost" type="button" data-a="add-aproveitamento">+ Adicionar aproveitamento</button><div id="aproveitamento-summary" style="margin-top:12px">${renderAproveitamentoSummary({qtd:n.qtd,un:n.un,preco:n.preco||0,aproveitamentos:items})}</div></div>`}
+function fIns(i){const n=ins(i)||{un:'g',qtd:'',preco:'',nome:'',aproveitamentos:[]};const hasA=Array.isArray(n.aproveitamentos)&&n.aproveitamentos.length>0;openM(i?'Editar insumo':'Novo insumo',`<label>Nome<input id="n" value="${esc(n.nome)}" placeholder="Ex.: Chocolate ao leite"></label><div class="g2"><label>Quantidade da embalagem<input id="q" type="number" inputmode="decimal" step="any" value="${n.qtd}"></label><label>Unidade<select id="u">${opts(n.un)}</select></label></div><label>Preço pago na embalagem (R$)<input id="p" type="number" inputmode="decimal" step="any" value="${n.preco}"></label><label class="aproveitamento-toggle"><span class="term-help">Este insumo possui diferentes aproveitamentos<span class="help-tip" data-tip="O aproveitamento permite transformar um insumo comprado em diferentes unidades ou partes utilizadas nas receitas. Exemplo: uma bandeja de morangos pode gerar morangos grandes e pequenos." aria-label="O que significa aproveitamento?" role="button" tabindex="0">i</span></span><input id="has-aproveitamentos" type="checkbox" ${hasA?'checked':''}></label><div id="aproveitamentos-wrap" ${hasA?'':'hidden'}>${renderAproveitamentosEditor(n)}</div><div class="prev" id="pv"></div>${n.hist&&n.hist.length>1?'<p class="mu" style="font-size:.76rem">Histórico: '+n.hist.slice(-5).map(h=>(h.d?h.d.split('-').reverse().join('/'):'antes')+' '+R(h.p)).join(' · ')+'</p>':''}<div class="mact"><button class="ghost" data-a="x">Cancelar</button><button class="pri" data-id="${i||''}" data-a="save-ins">Salvar</button></div>`);pv();updateAproveitamentosPreview();}
+function pv(){const e=$('#pv');if(!e)return;const n={un:$('#u').value,qtd:+$('#q').value,preco:+$('#p').value};e.innerHTML=n.qtd>0&&n.preco>0?'<span>Custo calculado</span><b>'+ctext(n)+'</b>':'<span>Informe quantidade e preço para ver o custo por g, ml ou unidade.</span>'}
+const opts=sel=>U.map(u=>`<option ${u===sel?'selected':''}>${u}</option>`).join('');
+function rrow(t){const n=ins(t.i);const variants=(n&&Array.isArray(n.aproveitamentos)&&n.aproveitamentos.length)?n.aproveitamentos.map(a=>`<option value="${a.id}" ${a.id===t.a?'selected':''}>${esc(a.nome)} · ${R(calcAproveitamentoUnit(n,a))}/un</option>`):[];const unitSelect=variants.length?`<select class="ra" aria-label="Aproveitamento">${variants.join('')}</select>`:'';return`<div class="irow"><select class="ri">${D.insumos.length?D.insumos.map(n=>`<option value="${n.id}" ${n.id===t.i?'selected':''}>${esc(n.nome)}</option>`).join(''):'<option value="">Nenhum insumo cadastrado</option>'}</select>${unitSelect}<input class="rq" type="number" inputmode="decimal" step="any" placeholder="Qtd." value="${t.q||''}"><select class="ru">${opts((t.a&&n&&n.aproveitamentos&&n.aproveitamentos.some(a=>a.id===t.a))?'un':(t.u||'g'))}</select><button class="x" data-a="rm" aria-label="Remover">✕</button></div>`}
+function fRec(i){const r=D.receitas.find(x=>x.id===i)||{nome:'',rend:1,un:'un',itens:[]},first=D.insumos[0],items=r.itens.length?r.itens:[{i:first?.id||'',q:'',u:first?UB[first.un][0]:'g'}];openM(i?'Editar receita':'Nova receita',`<label>Nome da receita<input id="rn" value="${esc(r.nome)}" placeholder="Ex.: Brigadeiro gourmet"></label><div class="g2"><label>Rendimento<input id="rr" type="number" inputmode="decimal" step="any" value="${r.rend}"></label><label>Unidade<select id="ru2">${opts(r.un)}</select></label></div><h4>Ingredientes</h4><div id="rows">${items.map(rrow).join('')}</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="ghost" data-a="add-row">+ Ingrediente</button><button class="ghost" data-a="toggle-inline-ins">+ Novo insumo</button></div><div id="inline-ins" class="card" style="margin-top:12px;padding:14px" hidden><h4 style="margin-top:0">Novo insumo</h4><label>Nome<input id="rin" placeholder="Ex.: Chocolate ao leite"></label><div class="g2"><label>Quantidade da embalagem<input id="riq" type="number" inputmode="decimal" step="any" placeholder="Ex.: 500"></label><label>Unidade<select id="riu">${opts('g')}</select></label></div><label>Preço pago na embalagem (R$)<input id="rip" type="number" inputmode="decimal" step="any" placeholder="Ex.: 12,50"></label><div class="mact"><button class="ghost" data-a="toggle-inline-ins">Cancelar</button><button class="pri" data-a="save-inline-ins">Criar e adicionar</button></div></div><p class="mu" style="font-size:.76rem;margin-top:14px">Embalagem, mão de obra, custos indiretos e perdas pertencem ao <b>produto final</b>.</p><div class="mact"><button class="ghost" data-a="x">Cancelar</button><button class="pri" data-a="save-rec" data-id="${i||''}">Salvar receita</button></div>`)}
+function componentType(t){return t.p?'product':t.i?'ingredient':'recipe'}
+function componentValue(t,kind){return kind==='product'?t.p||'':kind==='ingredient'?t.i||'':t.r||''}
+function recipeUnits(recipeId){const r=D.receitas.find(x=>x.id===recipeId),base=UB[r?.un]||UB.un;return U.filter(u=>(UB[u]||UB.un)[0]===base[0])}
+function unitOptions(units,selected){return units.map(u=>`<option ${u===selected?'selected':''}>${u}</option>`).join('')}
+function componentOptions(kind,ownerId,selected){const list=kind==='recipe'?D.receitas:kind==='ingredient'?D.insumos:D.produtos.filter(p=>canIncludeProduct(ownerId,p.id));return(list.length?list.map(x=>`<option value="${x.id}" ${x.id===selected?'selected':''}>${esc(x.nome)}</option>`).join(''):'<option value="">Nenhum '+(kind==='recipe'?'receita':kind==='ingredient'?'insumo':'produto')+' disponível</option>')}
+function defaultComponent(kind,ownerId=''){const list=kind==='recipe'?D.receitas:kind==='ingredient'?D.insumos:D.produtos.filter(p=>canIncludeProduct(ownerId,p.id)),x=list[0];if(kind==='recipe')return{r:x?.id||'',q:+x?.rend||1,u:x?.un||'un'};if(kind==='ingredient'){const hasA=x&&Array.isArray(x.aproveitamentos)&&x.aproveitamentos.length;return{i:x?.id||'',q:1,u:x? (hasA?'un':UB[x.un][0]):'g',a:hasA?x.aproveitamentos[0].id:''}};return{p:x?.id||'',q:1}}
+function ingredientAproveitamentoOptions(n,selected=''){if(!n||!Array.isArray(n.aproveitamentos)||!n.aproveitamentos.length)return'<option value="">—</option>';return n.aproveitamentos.map(a=>`<option value="${a.id}" ${a.id===selected?'selected':''}>${esc(a.nome)} · ${R(calcAproveitamentoUnit(n,a))}/un</option>`).join('')}
+function prow(t,ownerId=''){const kind=componentType(t),n=ins(t.i),r=D.receitas.find(x=>x.id===t.r),usesAproveitamento=kind==='ingredient'&&n&&Array.isArray(n.aproveitamentos)&&n.aproveitamentos.length;const selectedA=t.a||((usesAproveitamento&&n.aproveitamentos[0])?n.aproveitamentos[0].id:'');const selectedUnit=kind==='recipe'?(t.u||r?.un||'un'):(kind==='ingredient'&&(selectedA&&n&&n.aproveitamentos&&n.aproveitamentos.some(a=>a.id===selectedA))?'un':(t.u||(n?UB[n.un][0]:'g')));const units=kind==='recipe'?recipeUnits(t.r):U;return`<div class="prow"><select class="ctype" aria-label="Tipo de componente"><option value="recipe" ${kind==='recipe'?'selected':''}>Receita</option><option value="ingredient" ${kind==='ingredient'?'selected':''}>Insumo</option><option value="product" ${kind==='product'?'selected':''}>Produto</option></select><select class="citem" aria-label="Componente">${componentOptions(kind,ownerId,componentValue(t,kind))}</select>${usesAproveitamento?`<select class="ca" aria-label="Aproveitamento">${ingredientAproveitamentoOptions(n,selectedA)}</select>`:'<select class="ca" aria-label="Aproveitamento" hidden><option value="">—</option></select>'}<input class="prq" type="number" inputmode="decimal" step="any" placeholder="Qtd." value="${t.q||1}"><select class="cru" aria-label="Unidade" ${kind==='ingredient'||kind==='recipe'?'':'hidden'}>${unitOptions(units,selectedUnit)}</select><button class="x" data-a="rm-prod-row" aria-label="Remover componente">✕</button></div>`}
+function fProd(i){const p=D.produtos.find(x=>x.id===i)||{nome:'',un:'un',componentes:[],emb:0,mao:0,indPct:21,perda:3,margem:60,atual:0};openM(i?'Editar produto':'Novo produto',`<label>Nome do produto<input id="pn" value="${esc(p.nome)}" placeholder="Ex.: Caixa com 6 brigadeiros"></label><label>Unidade de venda<select id="pu">${opts(p.un)}</select></label><h4>Composição</h4><p class="mu" style="font-size:.76rem">Adicione receitas, insumos avulsos ou outros produtos que entram em cada unidade deste produto.</p><div id="prows" class="prod-components">${p.componentes.map(c=>prow(c,p.id)).join('')}</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="ghost" data-a="add-prod-row" data-kind="recipe">+ Receita</button><button class="ghost" data-a="add-prod-row" data-kind="ingredient">+ Insumo</button><button class="ghost" data-a="add-prod-row" data-kind="product">+ Produto</button></div><h4>Custos do produto</h4><div class="g2"><label>${termHelp('Embalagem')}<input id="pe" type="number" inputmode="decimal" step="any" value="${p.emb||0}"></label><div class="labor-field"><label>${termHelp('Mão de obra')}<input id="pm" type="number" inputmode="decimal" step="any" value="${p.mao||0}"></label><button class="ghost" type="button" data-a="toggle-labor-calc">Calcular mão de obra</button><div id="labor-calc" class="card labor-calc" style="margin-top:10px;padding:14px" hidden><p class="mu" style="font-size:.76rem;margin:0 0 10px">Valor da hora × tempo em horas ÷ rendimento da receita.</p><div class="g2 labor-fields"><label>Valor da sua hora (R$)<input id="labor-rate" type="number" inputmode="decimal" step="any" value="22"></label><label>Tempo de preparo (minutos)<input id="labor-minutes" type="number" inputmode="decimal" step="any" placeholder="Ex.: 60"></label><label>Rendimento da receita (unidades)<input id="labor-yield" type="number" inputmode="decimal" step="any" placeholder="Ex.: 30"></label><div class="prev labor-result"><span>Mão de obra por unidade</span><b id="labor-result">—</b></div></div><div class="mact"><button class="pri" type="button" data-a="apply-labor-calc">Usar valor calculado</button></div></div></div><label>${termHelp('Custos indiretos')} (%)<input id="pi" type="number" inputmode="decimal" step="0.01" value="${p.indPct}"></label><label>${termHelp('Perda / quebra (%)')}<input id="pp" type="number" inputmode="decimal" step="0.01" value="${p.perda}"></label><label>${termHelp('Margem desejada')}<input id="pma" type="number" inputmode="decimal" step="any" value="${p.margem||60}"></label><label>Preço atual (R$)<input id="pa" type="number" inputmode="decimal" step="any" value="${p.atual||''}"></label></div><div class="mact"><button class="ghost" data-a="x">Cancelar</button><button class="pri" data-a="save-prod" data-id="${i||''}">Salvar produto</button></div>`)}
+function laborUnitCost(){const rateInput=$('#labor-rate')?.value,rate=Number(rateInput),minutes=Number($('#labor-minutes')?.value),yieldCount=Number($('#labor-yield')?.value);return rateInput?.trim()!==''&&Number.isFinite(rate)&&Number.isFinite(minutes)&&Number.isFinite(yieldCount)&&rate>=0&&minutes>0&&yieldCount>0?rate*(minutes/60)/yieldCount:null}
+function updateLaborPreview(){const e=$('#labor-result');if(e){const amount=laborUnitCost();e.textContent=amount===null?'—':R(amount)}}
+function fBk(){openM('Backup',`<p class="mu">Seus dados ficam neste aparelho. Exporte uma cópia antes de trocar de celular ou navegador.</p><textarea id="bk" rows="8" spellcheck="false">${esc(JSON.stringify(D))}</textarea><div class="mact"><button class="ghost" data-a="del-all">Apagar tudo</button><button class="ghost" data-a="copy">Copiar</button><button class="pri" data-a="restore">Restaurar</button></div>`)}
+function lst(){return'🍬 *'+(D.loja||'Doces')+'* — lista de preços\n\n'+D.receitas.map(r=>{const p=r.atual>0?r.atual:cprSuggested(r);return'• '+r.nome.replace(/\s*\(exemplo\)/i,'')+' — '+R(p)+(r.un==='un'?' a unidade':' o '+r.un)}).join('\n')}
+function fLst(){openM('Lista de preços',`<p class="mu">Texto pronto para colar no WhatsApp. Usa o preço atual ou, se vazio, o sugerido.</p><label>Nome da sua loja<input id="lj" value="${esc(D.loja||'')}"></label><textarea id="ls" rows="9" spellcheck="false">${esc(lst())}</textarea><div class="mact"><button class="ghost" data-a="x">Fechar</button><button class="pri" data-a="copy">Copiar</button></div>`)}
+function fEnc(){if(!D.receitas.length){toast('Crie uma receita primeiro.');return}openM('Planejar produção e compras',`<div class="order-help"><p>Use esta ferramenta para descobrir os ingredientes e as embalagens que precisa comprar para produzir suas receitas.</p><p><b>1.</b> Informe quanto precisa produzir, usando a mesma unidade do rendimento. <b>2.</b> Confira os insumos necessários e quantas embalagens comprar. <b>3.</b> Copie a lista para levar às compras.</p><p>Exemplo: se a receita rende 490 g e você precisa de 980 g, informe 980.</p></div><div class="order-search"><input id="enc-search" type="search" placeholder="Buscar receita..." aria-label="Buscar receita pelo nome"><small id="enc-count">${D.receitas.length} receitas</small></div><div class="order-recipes">${D.receitas.map(r=>`<label class="order-recipe" data-search="${esc(r.nome.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase())}">${esc(r.nome)}<small>Rendimento da receita: ${r.rend} ${r.un}</small><input class="eq" data-id="${r.id}" type="number" inputmode="decimal" step="any" placeholder="Quanto precisa produzir (${r.un})"></label>`).join('')}</div><p id="enc-no-results" class="order-no-results" hidden>Nenhuma receita encontrada com esse nome.</p><div id="el"></div><textarea id="es" hidden></textarea><div class="mact"><button class="ghost" data-a="x">Fechar</button><button class="pri" id="enc-copy" data-a="copy" disabled>Copiar lista</button></div>`);eList()}
+function filterOrderRecipes(value){const query=value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),rows=[...document.querySelectorAll('.order-recipe')];let visible=0;rows.forEach(row=>{const matches=row.dataset.search.includes(query);row.hidden=!matches;if(matches)visible++});$('#enc-count').textContent=`${visible} de ${rows.length} receitas`;$('#enc-no-results').hidden=visible>0}
+const fq=(x,b)=>b==='un'?Math.ceil(x-1e-9)+' un.':x>=1000?(x/1000).toFixed(2).replace('.',',')+(b==='g'?' kg':' L'):Math.round(x)+' '+b;
+function eList(){const need={};let tot=0,any=false;D.receitas.forEach(r=>{const e=document.querySelector('.eq[data-id="'+r.id+'"]'),q=e?+e.value||0:0;if(!(q>0))return;any=true;const m=q/(r.rend||1);tot+=calc(r).tot*m;r.itens.forEach(t=>{const n=ins(t.i);if(!n||UB[t.u]?.[0]!==uc(n).b)return;need[n.id]=(need[n.id]||0)+t.q*UB[t.u][1]*m})});const rows=Object.keys(need).map(k=>{const n=ins(k),b=uc(n).b,x=need[k];return{n,b,x,pz:Math.ceil(x/(n.qtd*UB[n.un][1])-1e-9)}});$('#enc-copy').disabled=!any;$('#el').innerHTML=any?'<h4 class="order-results-title">Insumos e quantidades para comprar</h4>'+rows.map(o=>`<div class="ln"><span>${esc(o.n.nome)} <small>necessário: ${fq(o.x,o.b)}</small></span><b>Comprar: ${o.pz} × ${o.n.qtd} ${o.n.un}</b></div>`).join('')+`<div class="ln tot"><span>Custo estimado da produção</span><b>${R(tot)}</b></div><p class="mu" style="font-size:.74rem;margin:0">As quantidades para comprar são arredondadas para embalagens inteiras.</p>`:'<p class="mu">Informe uma quantidade em pelo menos uma receita para calcular os insumos e as embalagens necessárias.</p>';$('#es').value='🛒 Lista de compras\n'+rows.map(o=>'• '+o.n.nome+': necessário '+fq(o.x,o.b)+'; comprar '+o.pz+' × '+o.n.qtd+' '+o.n.un).join('\n')+'\nCusto estimado da produção: '+R(tot)}
+function openM(t,h){$('#sh').innerHTML='<h3>'+t+'</h3>'+h;$('#ov').hidden=false;document.body.style.overflow='hidden'}
+function closeM(){$('#ov').hidden=true;document.body.style.overflow=''}
+function toast(m){const e=$('#toast');e.textContent=m;e.hidden=false;clearTimeout(tt);tt=setTimeout(()=>e.hidden=true,2800)}
+function render(){const fn={dash:vDash,ins:vIns,rec:vRec,prod:vProd,pre:vPre}[tab]||vDash;$('#app').innerHTML=fn();document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.id===tab))}
+function act(a,i,b){const A={
+'tab':()=>{tab=i;render()},'add-ins':()=>fIns(),'edit-ins':()=>fIns(i),'add-rec':()=>fRec(),'edit-rec':()=>fRec(i),'add-prod':()=>fProd(),'edit-prod':()=>fProd(i),'price':()=>{rid=i;rtype='recipe';tab='pre';render()},'price-prod':()=>{rid=i;rtype='product';tab='pre';render()},'sim':sim,'x':closeM,'bk':fBk,'lst':fLst,'enc':fEnc,'add-can':()=>{D.canais.push({n:'Novo canal',t:0});save();render()},'rm-can':()=>{D.canais.splice(+i,1);save();render()},
+'save-ins':()=>{const n=$('#n').value.trim(),qtd=+$('#q').value;if(!n||!(qtd>0))return toast('Preencha o nome e a quantidade.');const o=ins(i)||{id:id()};const pr=+$('#p').value||0;o.hist=o.hist||[];if(o.preco!==undefined&&o.preco!==pr)o.hist.push({d:td(),p:pr});else if(!o.hist.length)o.hist.push({d:td(),p:pr});const hasAproveitamentos=$('#has-aproveitamentos')?.checked;const itens=[...document.querySelectorAll('.ap-row')].map(row=>{const nome=row.querySelector('.ap-nome')?.value.trim()||'';const quantidade=+row.querySelector('.ap-quantidade')?.value||0;const pesoMedio=+row.querySelector('.ap-peso')?.value||0;if(!nome||!(quantidade>0)||!(pesoMedio>0))return null;return{id:row.dataset.apId||id(),nome,quantidade,pesoMedio}}).filter(Boolean);Object.assign(o,{nome:n,qtd,un:$('#u').value,preco:pr});if(hasAproveitamentos){if(!itens.length)return toast('Adicione pelo menos um aproveitamento válido.');o.aproveitamentos=itens;}else{delete o.aproveitamentos;}if(!ins(o.id))D.insumos.push(o);save();closeM();render();toast('Insumo salvo.')},
+'del-ins':()=>{const u=D.receitas.find(r=>r.itens.some(t=>t.i===i));if(u)return toast('Em uso na receita "'+u.nome+'".');D.insumos=D.insumos.filter(n=>n.id!==i);save();render()},
+'add-aproveitamento':()=>{const list=$('#aproveitamentos-list');if(!list)return;list.insertAdjacentHTML('beforeend',`<div class="irow ap-row" data-ap-id="${id()}"><input class="ap-nome" value="" placeholder="Nome do aproveitamento"><input class="ap-quantidade" type="number" inputmode="decimal" step="any" value="" placeholder="Qtd."><input class="ap-peso" type="number" inputmode="decimal" step="any" value="" placeholder="g"><button class="x" data-a="rm-aproveitamento" aria-label="Remover aproveitamento">✕</button></div>`);updateAproveitamentosPreview()},
+'rm-aproveitamento':()=>{const row=b.closest('.irow');if(row)row.remove();updateAproveitamentosPreview()},
+
+'add-row':()=>{const n=D.insumos[0];if(!n){$('#inline-ins').hidden=false;$('#rin').focus();return toast('Cadastre um insumo para adicionar à receita.')}$('#rows').insertAdjacentHTML('beforeend',rrow({i:n.id,q:'',u:UB[n.un][0]}))},'toggle-inline-ins':()=>{const e=$('#inline-ins');e.hidden=!e.hidden;if(!e.hidden)$('#rin').focus()},
+'save-inline-ins':()=>{const nome=$('#rin').value.trim(),qtd=Number($('#riq').value),preco=Number($('#rip').value),un=$('#riu').value;if(!nome||!Number.isFinite(qtd)||qtd<=0||!Number.isFinite(preco)||preco<0)return toast('Informe o nome, a quantidade e um preço válido.');const n={id:id(),nome,qtd,un,preco,hist:[{d:td(),p:preco}]};D.insumos.push(n);save();document.querySelectorAll('#rows .irow').forEach(row=>{const select=row.querySelector('.ri'),selected=select.value;select.innerHTML=D.insumos.map(x=>`<option value="${x.id}">${esc(x.nome)}</option>`).join('');select.value=selected});$('#rows').insertAdjacentHTML('beforeend',rrow({i:n.id,q:'',u:UB[n.un][0],a:n.aproveitamentos&&n.aproveitamentos.length?n.aproveitamentos[0].id:''}));$('#inline-ins').hidden=true;toast('Insumo criado e adicionado à receita.')},
+'rm':()=>b.closest('.irow').remove(),
+'save-rec':()=>{const n=$('#rn').value.trim(),itens=[...document.querySelectorAll('.irow')].map(r=>({i:r.querySelector('.ri').value,q:+r.querySelector('.rq').value,u:r.querySelector('.ru').value,a:r.querySelector('.ra')?.value||''})).filter(x=>x.i&&x.q>0);if(!n||!itens.length)return toast('Informe o nome e ao menos um ingrediente.');const o=D.receitas.find(x=>x.id===i)||{id:id()};Object.assign(o,{nome:n,rend:+$('#rr').value||1,un:$('#ru2').value,itens});if(!D.receitas.includes(o))D.receitas.push(o);save();closeM();rid=o.id;rtype='recipe';render();toast('Receita salva.')},
+'del-rec':()=>{if(D.produtos.some(p=>p.componentes.some(c=>c.r===i)))return toast('Essa receita faz parte de um produto.');D.receitas=D.receitas.filter(r=>r.id!==i);save();if(rid===i)rid=D.receitas[0]?.id||null;render()},
+'toggle-labor-calc':()=>{const e=$('#labor-calc');e.hidden=!e.hidden;if(!e.hidden)updateLaborPreview()},
+'apply-labor-calc':()=>{const amount=laborUnitCost();if(amount===null)return toast('Informe um valor por hora, tempo e rendimento válidos.');$('#pm').value=amount.toFixed(2);toast('Mão de obra calculada por unidade.')},
+'add-prod-row':()=>{const kind=b.dataset.kind||'recipe',owner=$('#sh [data-a="save-prod"]').dataset.id,list=kind==='recipe'?D.receitas:kind==='ingredient'?D.insumos:D.produtos.filter(p=>canIncludeProduct(owner,p.id));if(!list.length)return toast('Não há '+(kind==='recipe'?'receitas':kind==='ingredient'?'insumos':'produtos disponíveis')+' para adicionar.');$('#prows').insertAdjacentHTML('beforeend',prow(defaultComponent(kind,owner),owner))},'rm-prod-row':()=>b.closest('.prow').remove(),
+'save-prod':()=>{const n=$('#pn').value.trim(),o=D.produtos.find(x=>x.id===i)||{id:id()},componentes=[...document.querySelectorAll('#prows .prow')].map(row=>{const kind=row.querySelector('.ctype').value,id=row.querySelector('.citem').value,q=Number(row.querySelector('.prq').value),u=row.querySelector('.cru').value,a=row.querySelector('.ca')?.value||'';return kind==='recipe'?{r:id,q,u}:kind==='ingredient'?{i:id,q,u,a}:{p:id,q}}).filter(c=>(c.r||c.i||c.p)&&Number.isFinite(c.q)&&c.q>0);if(!n||!componentes.length)return toast('Informe o nome e ao menos um componente válido.');if(componentes.some(c=>c.p&&!canIncludeProduct(o.id,c.p)))return toast('Esse produto criaria uma composição circular.');Object.assign(o,{nome:n,un:$('#pu').value,componentes,emb:+$('#pe').value||0,mao:+$('#pm').value||0,indPct:Math.max(0,+$('#pi').value||0),perda:Math.max(0,+$('#pp').value||0),margem:+$('#pma').value||60,atual:+$('#pa').value||0});delete o.ind;if(!D.produtos.includes(o))D.produtos.push(o);save();closeM();rid=o.id;rtype='product';tab='pre';render();toast('Produto salvo.')},
+'dup-prod':()=>{const p=D.produtos.find(x=>x.id===i);if(!p)return;const n=JSON.parse(JSON.stringify(p));n.id=id();n.nome=p.nome.replace(/\s*\(cópia\)$/i,'')+' (cópia)';n.atual=0;D.produtos.push(n);save();rid=n.id;rtype='product';tab='pre';render();toast('Produto duplicado.')},
+'del-prod':()=>{const used=D.produtos.find(p=>p.id!==i&&(p.componentes||[]).some(c=>c.p===i));if(used)return toast('Esse produto faz parte de "'+used.nome+'". Remova-o de lá antes de excluir.');D.produtos=D.produtos.filter(p=>p.id!==i);save();if(rid===i)rid=D.produtos[0]?.id||null;render()},
+copy:()=>{const t=$('#bk')||$('#ls')||$('#es');if(!t)return;t.select();try{navigator.clipboard.writeText(t.value).then(()=>toast('Copiado.'),()=>toast('Selecione e copie manualmente.'))}catch(e){toast('Selecione e copie manualmente.')}},
+restore:()=>{try{const d=JSON.parse($('#bk').value);if(!Array.isArray(d.insumos)||!Array.isArray(d.receitas))throw 0;D=d;fix();save();closeM();render();toast('Dados restaurados.')}catch(e){toast('Backup inválido.')}},
+'del-all':()=>{D={insumos:[],receitas:[],produtos:[]};fix();save();closeM();tab='dash';render();toast('Tudo apagado.')},
+'use-sim':()=>{const arr=rtype==='product'?D.produtos:D.receitas,o=arr.find(x=>x.id===rid),p=+$('#sp').value||0;if(o&&p>0){o.atual=p;save();closeM();render();toast('Preço atual atualizado.')}}};if(A[a])A[a]()}
+document.addEventListener('click',e=>{if(!e.target.closest('.account'))closeAccountMenu();const h=e.target.closest('.help-tip');if(h){toast(h.dataset.tip);return}const b=e.target.closest('[data-a]');if(!b){if(e.target.id==='ov')closeM();return}const a=b.dataset.a;if(a.startsWith('del-')&&!b.dataset.arm){b.dataset.arm=1;const t=b.textContent;b.textContent='Confirmar?';setTimeout(()=>{b.textContent=t;delete b.dataset.arm},3000);return}act(a,b.dataset.id,b)});
+document.addEventListener('change',e=>{const t=e.target;if(t.classList.contains('ctype')){const row=t.closest('.prow'),owner=$('#sh [data-a="save-prod"]').dataset.id,kind=t.value,q=row.querySelector('.prq').value;row.outerHTML=prow({...defaultComponent(kind,owner),q:q||1},owner)}else if(t.classList.contains('citem')){const row=t.closest('.prow'),kind=row.querySelector('.ctype').value;if(kind==='ingredient'){const n=ins(t.value);const ap=row.querySelector('.ca');if(ap){const hasA=n&&Array.isArray(n.aproveitamentos)&&n.aproveitamentos.length;if(!hasA){ap.hidden=true;ap.innerHTML='<option value="">—</option>';row.querySelector('.cru').value=UB[n?.un||'g'][0];return}ap.hidden=false;const optsA=ingredientAproveitamentoOptions(n,n.aproveitamentos[0].id);ap.innerHTML=optsA;const v=n.aproveitamentos[0].id;ap.value=v;row.querySelector('.cru').value='un';}else if(n){row.querySelector('.cru').value=UB[n.un][0]}}else if(kind==='recipe'){const units=recipeUnits(t.value),unit=row.querySelector('.cru').value,selected=units.includes(unit)?unit:(D.receitas.find(r=>r.id===t.value)?.un||'un');row.querySelector('.cru').innerHTML=unitOptions(units,selected)}}else if(t.classList.contains('ca')){const row=t.closest('.prow');if(row)row.querySelector('.cru').value='un';}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAccountMenu();if((e.key==='Enter'||e.key===' ')&&e.target.matches('.help-tip')){e.preventDefault();toast(e.target.dataset.tip)}});
+function onIn(e){const t=e.target;if(t.id==='enc-search'){filterOrderRecipes(t.value);return}if(['labor-rate','labor-minutes','labor-yield'].includes(t.id)){updateLaborPreview();return}const o=(rtype==='product'?D.produtos:D.receitas).find(x=>x.id===rid);if(t.closest('#sh')&&['q','u','p'].includes(t.id)){pv();updateAproveitamentosPreview()}if(t.id==='sim-type'&&e.type==='change'){const type=t.value,arr=type==='product'?D.produtos:D.receitas;const r=arr[0];if(!r)return;rid=r.id;rtype=type;const sel=$('#sim-rec');sel.innerHTML=arr.map(q=>`<option value="${q.id}">${esc(q.nome)}</option>`).join('');updateSim(r,type);return}if(t.id==='sim-rec'&&e.type==='change'){const arr=$('#sim-type').value==='product'?D.produtos:D.receitas,r=arr.find(x=>x.id===t.value);if(r){rid=r.id;rtype=$('#sim-type').value;$('#sp').value=cprSuggested(r).toFixed(2);updateSim(r,rtype)}return}if(t.id==='sp'){if(o)updateSim(o,rtype);return}if(t.id==='qins'||t.id==='qrec'||t.id==='qprod'){clearTimeout(searchTimer);searchTimer=setTimeout(()=>render(),120);return}if(t.id==='has-aproveitamentos'){updateAproveitamentosPreview();return}if(t.classList.contains('ap-nome')||t.classList.contains('ap-quantidade')||t.classList.contains('ap-peso')){updateAproveitamentosPreview();return}if(e.type==='change'&&t.classList.contains('ri')){const n=ins(t.value);if(n){const row=t.parentNode;const sel=row.querySelector('.ra');if(sel){const optsA=n.aproveitamentos&&n.aproveitamentos.length?n.aproveitamentos.map(a=>`<option value="${a.id}" ${a.id===t.dataset.defaultA?'selected':''}>${esc(a.nome)} · ${R(calcAproveitamentoUnit(n,a))}/un</option>`).join(''):'<option value="">—</option>';sel.innerHTML=optsA;if(n.aproveitamentos&&n.aproveitamentos.length){const v=n.aproveitamentos[0].id;sel.value=v;row.querySelector('.ru').value='un';}}else row.querySelector('.ru').value=UB[n.un][0]}}if(e.type==='change'&&t.classList.contains('ra')){const row=t.closest('.irow');if(row)row.querySelector('.ru').value='un';updateAproveitamentosPreview();}if(t.id==='mg'&&o){o.margem=+t.value;$('#mv').textContent=t.value+'%';o.__type=rtype;$('#res').innerHTML=resH(o);upCh(o);save()}if(t.id==='at'&&o){o.atual=+t.value||0;o.__type=rtype;$('#res').innerHTML=resH(o);save()}if(t.classList.contains('cn')||t.classList.contains('ct')){const c=D.canais[+t.dataset.k];if(c){if(t.classList.contains('cn'))c.n=t.value;else c.t=+t.value||0;o.__type=rtype;const p=document.querySelector('[data-p="'+t.dataset.k+'"]');if(p&&o)p.textContent=cpr(o,c.t);save()}}if(t.classList.contains('eq'))eList();if(t.id==='lj'){D.loja=t.value;save();$('#ls').value=lst()}if(t.id==='rs'&&e.type==='change'){rid=t.value;render()}if(t.id==='pt'&&e.type==='change'){rtype=t.value;const arr=rtype==='product'?D.produtos:D.receitas;rid=arr[0]?.id||null;render()}}
+
+addEventListener('input',onIn);addEventListener('change',onIn);
+
+function setAuthMessage(msg,ok=false){const e=$('#auth-msg');if(e){e.textContent=msg;e.style.color=ok?'var(--ok)':'var(--mu)'}}
+function setAuthMode(mode){
+  authMode=mode;
+  const reset=mode==='reset', signup=mode==='signup';
+  $('#auth-title').textContent=reset?'Redefinir senha':signup?'Criar conta':'Entrar';
+  $('#auth-subtitle').textContent=reset?'Escolha uma nova senha para sua conta.':signup?'Crie sua conta para salvar seus dados na nuvem.':'Acesse suas receitas, insumos e preços de qualquer dispositivo.';
+  $('#auth-submit').textContent=reset?'Salvar nova senha':signup?'Criar conta':'Entrar';
+  $('#auth-toggle').textContent=reset?'Voltar para entrar':signup?'Já tenho uma conta':'Criar conta';
+  $('#auth-name-wrap').hidden=!signup;
+  $('#auth-license-wrap').hidden=!signup;
+  $('#auth-password-confirm-wrap').hidden=!reset;
+  $('#auth-forgot').hidden=signup||reset;
+  $('#auth-password').autocomplete=reset||signup?'new-password':'current-password';
+  setAuthMessage('');
+}
+async function requestPasswordReset(){
+  if(!supabaseClient){setAuthMessage('Configure primeiro as chaves do Supabase no código.');return}
+  const email=$('#auth-email').value.trim();
+  if(!email){setAuthMessage('Informe seu e-mail para receber o link de recuperação.');$('#auth-email').focus();return}
+  try{
+    const redirectTo=window.location.href.split('#')[0];
+    const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo});
+    if(error)throw error;
+    setAuthMessage('Enviamos um link para seu e-mail. Verifique também a pasta de spam.',true);
+  }catch(err){setAuthMessage(err.message||'Não foi possível enviar o e-mail de recuperação.')}
+}
+async function handleAuthSubmit(e){
+
+  e.preventDefault();
+  setAuthMessage('Processando...');
+
+  if(!supabaseClient){
+    setAuthMessage('Configure primeiro as chaves do Supabase no código.');
+    return;
+  }
+
+  const email = $('#auth-email').value.trim();
+  const password = $('#auth-password').value;
+
+  try{
+
+    if(authMode === 'reset'){
+
+      const confirmation = $('#auth-password-confirm').value;
+
+      if(password.length < 6)
+        throw new Error('A nova senha precisa ter pelo menos 6 caracteres.');
+
+      if(password !== confirmation)
+        throw new Error('As senhas não coincidem.');
+
+      const {error} = await supabaseClient.auth.updateUser({password});
+
+      if(error) throw error;
+
+      setAuthMessage('Senha alterada com sucesso. Entrando...', true);
+
+      setTimeout(async()=>{
+        const {data:{session}} = await supabaseClient.auth.getSession();
+        await startSession(session);
+      },500);
+
+      return;
+    }
+
+    if(authMode === 'login'){
+
+      const {error} =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+      if(error) throw error;
+
+    }else{
+
+      const name = $('#auth-name').value.trim();
+      const licenseCode = $('#auth-license').value.trim().toUpperCase();
+
+      if(!name)
+        throw new Error('Digite seu nome.');
+
+      if(!licenseCode)
+        throw new Error('Digite o código da sua licença.');
+
+      // 1. Verifica a licença antes de criar a conta
+      const {data: licenseData, error: licenseError} =
+        await supabaseClient.rpc('validate_license', {
+          p_license_code: licenseCode,
+          p_email: email
+        });
+
+      if(licenseError)
+        throw licenseError;
+
+      if(!licenseData || !licenseData.valid)
+        throw new Error(
+          licenseData?.message ||
+          'Licença inválida ou o e-mail não corresponde à licença.'
+        );
+
+      if(licenseData.status !== 'active')
+        throw new Error('Esta licença não está ativa.');
+
+      // 2. Licença válida: agora cria a conta
+      const {data,error} =
+  await supabaseClient.auth.signUp({
+    email,
+    password,
+    options:{
+      emailRedirectTo:
+        'https://doisamorespg.com.br/docecusto/app-87a3b659a902/',
+      data:{
+        full_name:name,
+        license_code:licenseCode
+      }
+    }
+  });
+
+      if(error) throw error;
+
+      // 3. Se o Supabase criar a sessão imediatamente,
+      // já vincula a licença ao usuário.
+      if(data.session){
+
+        const {data:activationData,error:activationError} =
+          await supabaseClient.rpc('activate_license',{
+            p_license_code:licenseCode
+          });
+
+        if(activationError)
+          throw activationError;
+
+        if(!activationData?.success)
+          throw new Error(
+            activationData?.message ||
+            'Não foi possível ativar a licença.'
+          );
+
+        setAuthMessage(
+          'Conta criada e licença ativada com sucesso.',
+          true
+        );
+
+      }else{
+
+        setAuthMessage(
+          'Conta criada. Verifique seu e-mail para confirmar o cadastro.',
+          true
+        );
+      }
+    }
+
+  }catch(err){
+
+    setAuthMessage(
+      err.message || 'Não foi possível concluir.'
+    );
+  }
+}
+async function loadProfile(){
+  const {data,error}=await supabaseClient.from('profiles').select('id,email,full_name,role').eq('id',currentUser.id).single();
+  if(error)throw error;currentProfile=data;
+}
+function showApp(){
+  $('#auth-screen').hidden=true;$('#shell').hidden=false;
+  $('#account-name').textContent=currentProfile?.full_name||'Doceira';
+  $('#account-email').textContent=currentUser?.email||'';
+  $('#admin-nav').hidden=currentProfile?.role!=='admin';
+}
+function showAuth(){currentUser=null;currentProfile=null;cloudReady=false;$('#shell').hidden=true;$('#auth-screen').hidden=false;setAuthMode('login')}
+
+async function startSession(session){
+
+  if(!session){showAuth();return}
+
+  currentUser=session.user;
+
+  try{
+
+    // Ativa a licença após o usuário estar autenticado
+    const licenseCode =
+      currentUser.user_metadata?.license_code;
+
+    if(licenseCode){
+
+      const {data:activationData,error:activationError} =
+        await supabaseClient.rpc('activate_license',{
+          p_license_code:licenseCode
+        });
+
+      if(activationError)
+        throw activationError;
+
+      if(!activationData?.success)
+        throw new Error(
+          activationData?.message ||
+          'Não foi possível ativar a licença.'
+        );
+    }
+
+    await loadProfile();
+
+    const hadCloud=await loadCloud();
+
+    if(!hadCloud){
+
+      D=load();
+      fix();
+
+      await supabaseClient
+        .from('user_data')
+        .upsert({
+          user_id:currentUser.id,
+          data:D,
+          updated_at:new Date().toISOString()
+        },{
+          onConflict:'user_id'
+        });
+    }
+
+    cloudReady=true;
+
+    tab='dash';
+    rid=D.receitas[0]?.id||D.produtos[0]?.id||null;
+    rtype=D.receitas.length?'recipe':'product';
+
+    showApp();
+    render();
+
+  }catch(err){
+
+    console.error(err);
+
+    setAuthMessage(
+      err.message ||
+      'Não foi possível carregar seu perfil. Verifique o SQL do Supabase e tente novamente.'
+    );
+
+    await supabaseClient.auth.signOut();
+  }
+
+}
+
+
+async function bootAuth(){
+  if(!supabaseClient){showAuth();setAuthMessage('Cole o Project URL e a Publishable Key do Supabase no início do código.');return}
+  $('#auth-form').addEventListener('submit',handleAuthSubmit);
+  $('#auth-toggle').addEventListener('click',()=>{if(authMode==='reset'){setAuthMode('login');return}setAuthMode(authMode==='login'?'signup':'login')});
+  $('#auth-forgot').addEventListener('click',requestPasswordReset);
+  supabaseClient.auth.onAuthStateChange((event,session)=>{
+    setTimeout(async()=>{
+      if(event==='PASSWORD_RECOVERY'){
+        $('#shell').hidden=true;$('#auth-screen').hidden=false;setAuthMode('reset');setAuthMessage('Digite sua nova senha.',true);return;
+      }
+      if(event==='SIGNED_OUT'){showAuth();return}
+      if(event==='SIGNED_IN'||event==='INITIAL_SESSION')await startSession(session);
+    },0)
+  });
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  if(window.location.hash.includes('type=recovery')){
+    $('#shell').hidden=true;$('#auth-screen').hidden=false;setAuthMode('reset');setAuthMessage('Digite sua nova senha.',true);
+  }else if(session)await startSession(session);else showAuth();
+}
+async function refreshAdmin(){
+  if(currentProfile?.role!=='admin')return null;
+  const [{data:stats,error:statsError},{data:users,error:usersError}]=await Promise.all([
+    supabaseClient.rpc('admin_dashboard_stats'),
+    supabaseClient.from('profiles').select('id,email,full_name,role,created_at').order('created_at',{ascending:false})
+  ]);
+  if(statsError)throw statsError;if(usersError)throw usersError;
+  return {stats,users:users||[]};
+}
+function adminGrowthChart(points){
+  if(!points?.length)return '<div class="empty">Ainda não há dados suficientes para o gráfico.</div>';
+  const w=760,h=260,pad={l:42,r:18,t:18,b:34};
+  const vals=points.map(p=>Number(p.total)||0),max=Math.max(...vals,1);
+  const x=i=>pad.l+(i/(Math.max(points.length-1,1)))*(w-pad.l-pad.r);
+  const y=v=>pad.t+(1-v/(max||1))*(h-pad.t-pad.b);
+  const line=points.map((p,i)=>`${x(i).toFixed(1)},${y(vals[i]).toFixed(1)}`).join(' ');
+  const area=`${pad.l},${h-pad.b} ${line} ${x(points.length-1).toFixed(1)},${h-pad.b}`;
+  const labels=points.map((p,i)=>`<text class="chart-label" x="${x(i)}" y="${h-10}" text-anchor="middle">${esc(p.label)}</text>`).join('');
+  const dots=points.map((p,i)=>`<circle class="chart-dot" cx="${x(i)}" cy="${y(vals[i])}" r="4"><title>${esc(p.label)}: ${vals[i]} usuários</title></circle>`).join('');
+  const grids=[0,.5,1].map(t=>{const yy=y(max*t);return `<line class="chart-grid" x1="${pad.l}" x2="${w-pad.r}" y1="${yy}" y2="${yy}"/>`}).join('');
+  return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Crescimento de usuários">${grids}<polygon class="chart-area" points="${area}"/><polyline class="chart-line" points="${line}"/>${dots}${labels}</svg>`;
+}
+function vAdmin(){
+  return `<div class="hd"><div><h2>Admin</h2><p>Visão geral da plataforma e dos usuários.</p></div><button class="ghost" data-a="admin-refresh">Atualizar</button></div><div id="admin-content"><div class="empty">Carregando métricas...</div></div>`;
+}
+async function renderAdmin(){
+  const root=$('#admin-content');if(!root)return;
+  try{
+    const {stats:s,users}=await refreshAdmin();
+    const usersCount=Number(s.total_users)||0,recipes=Number(s.total_recipes)||0,ingredients=Number(s.total_ingredients)||0,products=Number(s.total_products)||0;
+    const rows=users.map(u=>`<tr><td><b>${esc(u.full_name||'Sem nome')}</b><br><span class="mu">${esc(u.email||'')}</span></td><td>${new Date(u.created_at).toLocaleDateString('pt-BR')}</td><td><span class="role-pill ${u.role==='admin'?'admin':''}">${u.role==='admin'?'Admin':'Usuário'}</span></td></tr>`).join('');
+    root.innerHTML=`<div class="admin-kpis">
+      <div class="admin-kpi"><small>Usuários</small><b>${usersCount}</b></div>
+      <div class="admin-kpi"><small>Receitas</small><b>${recipes}</b></div>
+      <div class="admin-kpi"><small>Insumos</small><b>${ingredients}</b></div>
+      <div class="admin-kpi"><small>Produtos</small><b>${products}</b></div>
+    </div>
+    <div class="admin-summary">
+      <div class="card admin-chart"><div class="hd" style="margin-bottom:4px"><div><h3>Crescimento de usuários</h3><p class="mu">Total acumulado por mês nos últimos 12 meses.</p></div><b style="color:var(--gold)">${usersCount}</b></div>${adminGrowthChart(s.user_growth||[])}</div>
+      <div class="card"><h3>Atividade</h3>
+        <div class="ln"><span>Novos usuários (7 dias)</span><b>${s.users_last_7_days||0}</b></div>
+        <div class="ln"><span>Novos usuários (30 dias)</span><b>${s.users_last_30_days||0}</b></div>
+        <div class="ln"><span>Usuários com dados</span><b>${s.users_with_data||0}</b></div>
+        <div class="ln"><span>Receitas por usuário</span><b>${usersCount?((recipes/usersCount).toFixed(1)).replace('.',','):'0'}</b></div>
+        <div class="ln"><span>Dados atualizados (7 dias)</span><b>${s.data_updated_last_7_days||0}</b></div>
+      </div>
+    </div>
+    <div class="card"><div class="hd"><div><h3>Usuários</h3><p class="mu">Contas cadastradas na plataforma.</p></div><b>${users.length}</b></div><div class="admin-user-table-wrap"><table class="admin-user-table"><thead><tr><th>Usuário</th><th>Cadastro</th><th>Perfil</th></tr></thead><tbody>${rows||'<tr><td colspan="3" class="mu">Nenhum usuário encontrado.</td></tr>'}</tbody></table></div></div>`;
+  }catch(err){root.innerHTML=`<div class="notice"><strong>Erro no dashboard.</strong><br>${esc(err.message||'Não foi possível carregar as métricas.')}</div>`}
+}
+const _render=render;
+render=function(){
+  const fn={dash:vDash,ins:vIns,rec:vRec,prod:vProd,pre:vPre,admin:vAdmin}[tab]||vDash;
+  $('#app').innerHTML=fn();
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.id===tab));
+  if(tab==='admin')renderAdmin();
+};
+const _act=act;
+act=function(a,i,b){
+  if(a==='mobile-nav-toggle'){
+    const nav=$('#nav'),toggle=$('.mobile-nav-toggle'),open=nav.hidden;
+    nav.hidden=!open;toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'Ocultar menu':'Mostrar menu');
+    toggle.title=open?'Ocultar menu':'Mostrar menu';
+    toggle.innerHTML=open?'<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 10 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':'<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 14 6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    return;
+  }
+  if(a==='account-toggle'){
+    const menu=$('#account-menu'),trigger=$('.account-trigger'),open=menu.hidden;
+    menu.hidden=!open;trigger.setAttribute('aria-expanded',String(open));
+    return;
+  }
+  if(a==='logout'){supabaseClient?.auth.signOut();return}
+  if(a==='admin-refresh'){renderAdmin();return}
+  if(a==='tab'&&i==='admin'&&currentProfile?.role!=='admin'){toast('Acesso restrito ao administrador.');return}
+  return _act(a,i,b);
+};
+function closeAccountMenu(){
+  const menu=$('#account-menu'),trigger=$('.account-trigger');
+  if(!menu||menu.hidden)return;
+  menu.hidden=true;trigger.setAttribute('aria-expanded','false');
+}
+bootAuth();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+</script>
+</body>
+</html>

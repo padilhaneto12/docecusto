@@ -1,0 +1,7 @@
+AddType application/manifest+json .webmanifest
+<IfModule mod_headers.c>
+Header set X-Robots-Tag "noindex, nofollow"
+<Files "sw.js">
+Header set Cache-Control "no-cache"
+</Files>
+</IfModule>
