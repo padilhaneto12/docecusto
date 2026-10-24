@@ -103,8 +103,8 @@ nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(sa
 nav button{padding:9px 6px;border-radius:10px;font-size:.78rem;white-space:nowrap}
 .mobile-nav-toggle{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:31;display:inline-flex;align-items:center;justify-content:center;width:40px;height:18px;min-height:0;padding:0;border:1px solid var(--ln);border-bottom:0;border-radius:10px 10px 0 0;background:var(--sh);color:var(--mu);line-height:1}
 .mobile-nav-toggle svg{width:16px;height:16px;display:block}
-#nav:not([hidden]):has(#admin-nav:not([hidden]))~.mobile-nav-toggle{bottom:calc(141px + env(safe-area-inset-bottom,0px))}
-body:has(#admin-nav:not([hidden])) #shell{padding-bottom:170px}
+#nav:not([hidden])~.mobile-nav-toggle{bottom:calc(141px + env(safe-area-inset-bottom,0px))}
+#shell{padding-bottom:170px}
 #nav[hidden]~.mobile-nav-toggle{bottom:calc(12px + env(safe-area-inset-bottom,0px));width:32px;height:24px;border:1px solid var(--ln);border-radius:12px;background:color-mix(in srgb,var(--sh) 90%,transparent)}
 .row{grid-template-columns:1fr auto}.acts{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
