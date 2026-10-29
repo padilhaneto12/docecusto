@@ -40,3 +40,19 @@ Não coloque sua chave real neste arquivo, no HTML, no GitHub ou em mensagens. S
 - O uso da Gemini pode gerar cobrança ou estar sujeito aos limites do plano da sua conta Google; confira os limites atuais no Google AI Studio.
 - O recurso depende da Edge Function publicada e do secret configurado. O HTML sozinho não consegue chamar a Gemini com segurança.
 - Não foi possível validar uma chamada real à Gemini/Supabase sem acesso ao seu painel e à sua chave; faça o teste de ponta a ponta após configurar.
+
+## Importação de receitas por imagem
+
+A versão atual também inclui a função `parse-recipe-image`, usada no cadastro de receitas para importar uma foto ou print. Ela usa o mesmo segredo `GEMINI_API_KEY` já configurado para a IA de insumos.
+
+1. Atualize os arquivos do aplicativo no seu serviço de hospedagem.
+2. Publique a nova Edge Function a partir da pasta do projeto:
+
+   ```bash
+   supabase functions deploy parse-recipe-image
+   ```
+
+3. Entre no Doce Custo, abra **Receitas → Nova receita** e clique em **Importar foto ou print**.
+4. Revise nome, rendimento, ingredientes, unidades e vínculos com insumos. A IA apenas preenche o formulário; não salva a receita automaticamente.
+
+Formatos aceitos: JPG, PNG e WebP, até 10 MB. Ingredientes sem vínculo ou com quantidade incerta devem ser revisados manualmente. Se o segredo `GEMINI_API_KEY` já existe nas Edge Functions, não é necessário cadastrá-lo novamente.

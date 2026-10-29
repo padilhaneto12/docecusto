@@ -1,2 +1,5 @@
 [functions.parse-ingredient-audio]
 verify_jwt = true
+
+[functions.parse-recipe-image]
+verify_jwt = true
